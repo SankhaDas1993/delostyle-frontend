@@ -1,4 +1,8 @@
 import React from 'react';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import useWindowSize from './useWindowSize';
 import "./technology.css";
 import html from "../../images/html.png";
 import css from '../../images/css.png';
@@ -19,7 +23,8 @@ import drupal from '../../images/drupal.png';
 import mysql from '../../images/mysql.png';
 import mongodb from '../../images/mongodb.png';
 import python from '../../images/python.png';
-import borderTg from "../../images/borderTg.png"
+import borderTg from "../../images/borderTg.png";
+import { useMediaQuery } from 'react-responsive';
 
 const technologies = [
   {
@@ -74,28 +79,62 @@ const technologies = [
 ];
 
 const Technology = () => {
+  const size = useWindowSize();
+  const lgsize = useMediaQuery({ query: '(min-width: 1024px)' });
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+
   return (
-    
-    <div className="tech-stack ">
-      {technologies.map((techGroup, index) => (
-        <div key={index} className="section p-2 overflow-hidden" >
-          <h2 className="techStack-heading">{techGroup.category}</h2>
-          <ul className="p-4 relative h-[270px]">  
-            {techGroup.techs.map((tech, idx) => (
-              <li key={idx} className='language overflow-hidden' >
-             
-             
-                <img src={tech.image} alt={tech.alt} />
-                {tech.text}
-                <img className="border-tech z-40 justify-end right-[7rem]"  src={ ["Drupal", "MongoDB", "Python"].includes(tech.text) ? borderTech : borderTg} alt="borderTech"   style={{height:tech.text === "HTML" || tech.text === "PHP" || tech.text === "Android"? "150px" : "80px",
-                top: tech.text == "Drupal" || tech.text == "MongoDB"  || tech.text === "Python"  ? 50 : null,
-                display : tech.text == "Wordpress" || tech.text == "MySQL" ? "none" : ""
-                }} />
-              </li>
-            ))}
-          </ul>
+    <div className={lgsize ? "techno-slide useFlexCenter" : "techno-slide"}>
+      {size.width <= 768 ? (
+        <Slider {...settings}>
+          {technologies.map((techGroup, index) => (
+            <div key={index} className="section p-2 overflow-hidden">
+              <h2 className="techStack-heading">{techGroup.category}</h2>
+              <ul className="p-4 relative h-[270px]">  
+                {techGroup.techs.map((tech, idx) => (
+                  <li key={idx} className='language overflow-hidden'>
+                    <img src={tech.image} alt={tech.alt} />
+                    {tech.text}
+                    <img className="border-tech z-40 justify-end right-[7rem]" src={["Drupal", "MongoDB", "Python"].includes(tech.text) ? borderTech : borderTg} alt="borderTech" style={{
+                      height: tech.text === "HTML" || tech.text === "PHP" || tech.text === "Android" ? "150px" : "80px",
+                      top: tech.text === "Drupal" || tech.text === "MongoDB" || tech.text === "Python" ? 50 : null,
+                      display: tech.text === "Wordpress" || tech.text === "MySQL" ? "none" : ""
+                    }} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </Slider>
+      ) : (
+        <div className="tech-stack">
+          {technologies.map((techGroup, index) => (
+            <div key={index} className="section p-2 overflow-hidden">
+              <h2 className="techStack-heading">{techGroup.category}</h2>
+              <ul className="p-4 relative h-[270px]">  
+                {techGroup.techs.map((tech, idx) => (
+                  <li key={idx} className='language overflow-hidden'>
+                    <img src={tech.image} alt={tech.alt} />
+                    {tech.text}
+                    <img className="border-tech z-40 justify-end right-[7rem]" src={["Drupal", "MongoDB", "Python"].includes(tech.text) ? borderTech : borderTg} alt="borderTech" style={{
+                      height: tech.text === "HTML" || tech.text === "PHP" || tech.text === "Android" ? "150px" : "80px",
+                      top: tech.text === "Drupal" || tech.text === "MongoDB" || tech.text === "Python" ? 50 : null,
+                      display: tech.text === "Wordpress" || tech.text === "MySQL" ? "none" : ""
+                    }} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }

@@ -7,12 +7,12 @@ import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg
 const Footer = () => {
   return (
     <footer className="bg-gray-100 text-gray-800">
-      <div className="container mx-auto  flex items-center justify-center flex-row px-4 py-10 sm:py-14 sm:px-10">
+      <div className="container mx-auto flex-mobile-footer flex items-center justify-center flex-row px-4 py-10 sm:py-14 sm:px-10">
         <div className="flex items-center justify-center flex-row lg:flex-row md:flex-col">
-          <div className="w-[400px] md:w-[370px] h-[240px] sm:h-[240px] relative flex items-center justify-center flex-col mb-4 lg:mb-0">
-            <img src={logo} alt="Delostyle Logo" className="h-20 mb-4 absolute  top-0 left-0" />
-            <p className="text-gray-500 w-[350px] absolute left-0  mt-5">Innovation Generation. Our team is inclined towards the client requirement and deliver with quality.</p>
-            <div className="flex space-x-4  sm: absolute bottom-0 left-0">
+          <div className="w-[400px] md:w-[370px] h-[240px] sm:h-[240px] mobile-res relative  flex items-center justify-center flex-col mb-4 lg:mb-0 ">
+            <img src={logo} alt="Delostyle Logo" className="h-20 mb-4 absolute top-0 left-0 absolute-screen" />
+            <p className="text-gray-500 w-[350px] absolute left-0  mt-5 absolute-screen">Innovation Generation. Our team is inclined towards the client requirement and deliver with quality.</p>
+            <div className="flex space-x-4  sm: absolute bottom-0 left-0 absolute-screen">
               <a href="#" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
                 <FontAwesomeIcon icon={faFacebookF} size="lg" />
               </a>
@@ -52,7 +52,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
-            <h4 className="font-semibold mb-4">Connect</h4>
+            <h4 className="connect font-semibold mb-4">Connect</h4>
             <ul className="text-gray-500">
               <li className="mb-2 flex items-center">
                 <FontAwesomeIcon icon={faPhone} size="lg" className="mr-2 text-orange-500" /> +916291095253

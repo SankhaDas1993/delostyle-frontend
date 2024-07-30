@@ -13,12 +13,17 @@ const Newsletter = () => {
         alignItems : "center",
         justifyContent : "center"
     }}>
-      <div className=" z-10 absolute items-center justify-center left-24" >
+      <div className="z-10 absolute items-center justify-center left-24" >
         <div className="flex items-center">
           <img src={bulbIcon} alt="bulb-icon" className="bulb-icon" />
           <h2 className="text-orange-500 text-xl mb-2 overflow-hidden">STAY CONNECTED</h2>
         </div>
-        <h2 className=" text-white text-center overflow-hidden mt-5" style={{fontSize:"46px",height:"80px"}}>Subscribe To Our Newsletter</h2>
+        <h2 
+          className="subscribe-head text-white text-3xl h-[80px] sm:text-1xl md:text-2xl lg:text-4xl text-center md:text-left mt-5"
+          style={{fontSize: "46px"}} 
+        >
+          Subscribe To Our Newsletter
+        </h2>
         <div className="overflow-hidden p-5" style={{ display: "flex", alignItems: "center" }}>
   <input
     type="email"

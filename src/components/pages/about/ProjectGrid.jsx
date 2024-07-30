@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ourwork2 from "../../images/ourwork2.png";
 import ourwork3 from "../../images/ourwork3.png";
 import ourwork4 from "../../images/ourwork4.png";
@@ -17,6 +17,7 @@ const ProjectCard = ({ image, title, link }) => (
 );
 
 const ProjectGrid = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const projects = [
     { title: 'Project Rangamaati', image: ourwork2, link: '/cases/rangamaati' },
     { title: 'Project BetterBuild', image: ourwork3, link: '/cases/betterbuild' },
@@ -24,11 +25,51 @@ const ProjectGrid = () => {
     { title: 'Project Eiffel', image: ourwork5, link: '/cases/effel' },
   ];
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 mt-8">
-      {projects.map((project, index) => (
-        <ProjectCard key={index} title={project.title} image={project.image} link={project.link} />
-      ))}
+
+    <div className="p-4 mt-8">
+      {/* Grid layout for larger screens */}
+      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} title={project.title} image={project.image} link={project.link} />
+        ))}
+      </div>
+
+      {/* Slider for mobile view */}
+      <div className="block sm:hidden relative">
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-300"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {projects.map((project, index) => (
+              <div key={index} className="w-full flex-shrink-0">
+                <ProjectCard title={project.title} image={project.image} link={project.link} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <button
+          onClick={prevSlide}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+        >
+          &#10094;
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+        >
+          &#10095;
+        </button>
+      </div>
     </div>
   );
 };
