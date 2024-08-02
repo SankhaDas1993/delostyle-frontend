@@ -24,6 +24,7 @@ import FAQ from './components/pages/services/FAQ/FAQs';
 
 const App = () => {
   return (
+    <div className='app'>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path='/contact' element={<Contact/>}/>
@@ -46,6 +47,7 @@ const App = () => {
       <Route path='/quote' element={<GetQuote/>}/>
       <Route path='/FAQ' element={<FAQ/>}/>
     </Routes>
+    </div>
   );
 };
 

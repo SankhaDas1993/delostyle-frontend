@@ -13,7 +13,11 @@ const Banner = () => {
   console.log(width)
   return (
     <div
-    className={ width >= 1381 ? "bg-blue-50  hero-section flex items-center h-screen relative overflow-hidden bg-cover bg-center lg:bg-black" : "bg-[#00274D]"}
+   className={width >= 1381 
+    ? "bg-gradient-to-b from-[#00274D] to-[#005BB3] hero-section flex items-center h-screen relative overflow-hidden bg-cover bg-center lg:bg-black" 
+    : "bg-[#00274D]"
+}
+
     // style={{
     //   backgroundColor : "#00274D"
     // }}  

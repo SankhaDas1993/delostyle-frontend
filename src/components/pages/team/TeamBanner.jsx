@@ -1,32 +1,68 @@
-import React from 'react';
-import banner2 from "../../images/banner2.jpg";
+import React, { useState, useEffect } from 'react';
 import bulbIcon from "../../images/bulbIcon.png";
-import bannerDots from "../../images/bannerDots.png"
-import aboutBanner from "../../images/aboutBanner.png"
-import teamBanner from "../../images/teamBanner.png"
+import teamBanner from "../../images/teamBanner.png";
 
 const TeamBanner = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // const bannerStyle = {
+  //   backgroundImage: isMobile ? 'none' : `url(${teamBanner})`,
+  //   backgroundColor: isMobile ? '#00274D' : 'transparent',
+  //   width: '100%',
+  //   height: 'auto',
+  //   minHeight: '300px',
+  // };
+
+  const bannerStyle = {
+    backgroundImage: isMobile 
+        ? 'none' 
+        : `url(${teamBanner})`,
+    backgroundColor: isMobile ? 'linear-gradient(151.69deg, #00274D 12.36%, #005BB3 120.37%)' : 'transparent',
+    width: '100%',
+    height: 'auto',
+    minHeight: '300px',
+};
+
   return (
-    <div 
-      className="consulting-banner relative bg-blue-50 flex  bg-center bg-no-repeat bg-cover"
-      style={{ backgroundImage: `url(${teamBanner})`, backgroundColor: "#00274D96", width: "1728px", height: "592px" }}
+    <div
+      className="relative flex bg-center bg-no-repeat bg-cover"
+      style={bannerStyle}
     >
-      <div className="absolute inset-0 bg-[#00274D] bg-opacity-50"></div>
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between  mx-20 text-white">
-    
-      <div className="items-start h-full mt-20 p-10" style={{width:"990px"}}> 
-  <div className="flex mb-10">
-    <img src={bulbIcon} alt="bulb-icon" className="bulb-icon" />
-    <h2 className="text-orange-500 text-xl ml-4" style={{ fontSize: "20px" }}>OUR TEAM</h2>
-  </div>
-  <div className="flex flex-col items-start">
-    <h2 className="text-white overflow-hidden py-2 font-bold mb-5" style={{ fontSize: "60px" }}>Our Team of Quality Experts And United Excellence</h2>
-    <p className="text-gray-700 text-white mt-5 overflow-hidden" style={{ fontSize: "24px"}}>We stand together to create exceptional quality products for our clients.</p>
-    <button className="bg-orange-500 text-white py-2 px-6 rounded-full mt-10" style={{ fontSize: "20px" }}>Lets get together</button>
-  </div>
+      <div className={`absolute inset-0 ${isMobile ? 'bg-[#00274D] bg-opacity-100' : 'bg-[#00274D] bg-opacity-50'}`}></div>
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between mx-5 md:mx-20 text-white py-10 md:py-20">
+        <div className="h-full mt-10 md:mt-20 px-4 md:px-10 w-full md:w-3/4 lg:w-1/2">
+          <div className="flex mb-5 md:mb-10">
+            <img src={bulbIcon} alt="bulb-icon" className="bulb-icon w-8 md:w-10" />
+            <h2 className="text-orange-500 text-lg md:text-xl ml-4">OUR TEAM</h2>
+          </div>
+          <div className="flex flex-col items-start">
+          <h2 className="text-white overflow-hidden py-2 font-bold mb-3 md:mb-5 text-2xl md:text-4xl md:w-[500px] lg:text-6xl leading-relaxed lg:whitespace-normal lg:w-[800px]">
+  Our Team of Quality Experts And United Excellence
+</h2>
+
+            <p className="text-white mt-3 md:mt-5 overflow-hidden text-base md:text-xl lg:text-2xl">
+              We stand together to create exceptional quality products for our clients.
+            </p>
+            <div className="w-full flex justify-start">
+  <button className="bg-orange-500 text-white py-2 px-4 md:px-6 rounded-full mt-5 md:mt-10 text-sm md:text-lg lg:text-xl">
+    Lets get together
+  </button>
 </div>
 
-        
+
+
+
+          </div>
+        </div>
       </div>
     </div>
   );

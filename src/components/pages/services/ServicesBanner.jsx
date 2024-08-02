@@ -11,7 +11,7 @@ const ServicesBanner = () => {
       <div className="absolute inset-0 bg-[#00274D] bg-opacity-75"></div>
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between  mx-20 text-white">
     
-      <div className="items-start h-full mt-20 p-10" style={{width:"990px"}}> 
+      <div className="items-start h-full mt-20 p-10 w-[990px]"> 
   <div className="flex mb-10">
     <img src={bulbIcon} alt="bulb-icon" className="bulb-icon" />
     <h2 className="text-orange-500 text-xl ml-4" style={{ fontSize: "20px" }}>OUR SERVICES</h2>

@@ -75,6 +75,28 @@ overflow: hidden;
   .language{
     font-size: 20px;
   }
+
+  .custom-arrow {
+    position: absolute;
+    top: 50%;
+    /* transform: translateY(-50%); */
+    border-radius: 50%;
+    color: orange;
+    font-size: 24px;
+    z-index: 1;
+    cursor: pointer;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .custom-prev-arrow {
+    left: 10px;
+  }
+  
+  .custom-next-arrow {
+    right: 10px;
+  }
+  
   
   
   

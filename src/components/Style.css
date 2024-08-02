@@ -93,6 +93,26 @@ border: 1px solid #D9D9D9;
   .mobile-view{
     width: 100vw !important;
   }
+  .mobileWidth{
+    width: 80% !important;
+  }
+  .custom-arrow {
+    right: 89px;
+    color: orange !important;
+  }
+}
+
+
+@media screen and (max-width: 768){
+
+  .newsletter-position{
+    right: 50px;
+    left: 20px;
+  }
+  .mobile-shift{
+    right: 40px;
+    left: 40px;
+  }
   
 }
 
@@ -101,3 +121,41 @@ border: 1px solid #D9D9D9;
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+  .subscribe-section {
+    background-color: #00274D;
+    background-image: none;
+  }
+
+  .mobile-shift {
+    left: 10px;
+    right: auto;
+  }
+
+  .subscribe-head {
+    font-size: 1.5rem;
+  }
+
+  .form-control {
+    font-size: 10px;
+    height: 10px;
+    padding: 0 10px;
+    width: 150px;
+  }
+
+  .subscribe-button {
+    height: 10px;
+    font-size: 10px;
+    padding: 0 10px;
+    width: 130px;
+  }
+}
+
+@media (min-width: 769px) {
+  .subscribe-section {
+    background-image: url("../../images/subscribe.png");
+  }
+}
+
+

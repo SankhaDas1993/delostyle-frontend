@@ -25,6 +25,7 @@ import mongodb from '../../images/mongodb.png';
 import python from '../../images/python.png';
 import borderTg from "../../images/borderTg.png";
 import { useMediaQuery } from 'react-responsive';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const technologies = [
   {
@@ -82,12 +83,38 @@ const Technology = () => {
   const size = useWindowSize();
   const lgsize = useMediaQuery({ query: '(min-width: 1024px)' });
 
+  const PrevArrow = (props) => {
+    const { className, onClick } = props;
+    return (
+      <div
+        className={`${className} custom-arrow custom-prev-arrow`}
+        onClick={onClick}
+      >
+        <FaChevronLeft />
+      </div>
+    );
+  };
+
+  const NextArrow = (props) => {
+    const { className, onClick } = props;
+    return (
+      <div
+        className={`${className} custom-arrow custom-next-arrow`}
+        onClick={onClick}
+      >
+        <FaChevronRight />
+      </div>
+    );
+  };
+
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+
+    nextArrow: <NextArrow />   
   };
 
   return (
@@ -95,7 +122,7 @@ const Technology = () => {
       {size.width <= 768 ? (
         <Slider {...settings}>
           {technologies.map((techGroup, index) => (
-            <div key={index} className="section p-2 overflow-hidden">
+            <div key={index} className="section p-2 overflow-hidden mobileWidth" >
               <h2 className="techStack-heading">{techGroup.category}</h2>
               <ul className="p-4 relative h-[270px]">  
                 {techGroup.techs.map((tech, idx) => (

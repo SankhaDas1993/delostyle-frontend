@@ -25,7 +25,7 @@ const Services = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 1024);
+      setIsSmallScreen(window.innerWidth <= 768);
     };
 
     window.addEventListener('resize', handleResize);
