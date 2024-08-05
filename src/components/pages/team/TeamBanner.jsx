@@ -14,23 +14,23 @@ const TeamBanner = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // const bannerStyle = {
-  //   backgroundImage: isMobile ? 'none' : `url(${teamBanner})`,
-  //   backgroundColor: isMobile ? '#00274D' : 'transparent',
-  //   width: '100%',
-  //   height: 'auto',
-  //   minHeight: '300px',
-  // };
-
   const bannerStyle = {
-    backgroundImage: isMobile 
-        ? 'none' 
-        : `url(${teamBanner})`,
-    backgroundColor: isMobile ? 'linear-gradient(151.69deg, #00274D 12.36%, #005BB3 120.37%)' : 'transparent',
+    backgroundImage: isMobile ? 'none' : `url(${teamBanner})`,
+    backgroundColor: isMobile ? '#00274D' : 'transparent',
     width: '100%',
     height: 'auto',
     minHeight: '300px',
-};
+  };
+
+//   const bannerStyle = {
+//     backgroundImage: isMobile 
+//         ? 'none' 
+//         : `url(${teamBanner})`,
+//     backgroundColor: isMobile ? 'linear-gradient(151.69deg, #00274D 12.36%, #005BB3 120.37%)' : 'transparent',
+//     width: '100%',
+//     height: 'auto',
+//     minHeight: '300px',
+// };
 
   return (
     <div

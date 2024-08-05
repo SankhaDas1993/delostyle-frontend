@@ -6,13 +6,13 @@ import "./newsletter.css";
 const Newsletter = () => {
   return (
     <div 
-      className="flex items-center justify-start bg-transparent subscribe-section relative overflow-hidden"
+      className="flex items-center newsletter-bg justify-start bg-transparent subscribe-section relative overflow-hidden"
       style={{
         width: "90%",
       }}
     >
       <div className="z-10 absolute flex-col w-full flex justify-start right-40 left-40 mobile-shift">
-        <div className="flex flex-col items-center sm:flex-row sm:items-center">
+        <div className="flex flex-col items-center sm:flex-row sm:items-center flex-box">
           <img src={bulbIcon} alt="bulb-icon" className="w-8 h-8 sm:w-10 sm:h-10 mr-2" />
           <h2 className="text-orange-500 text-xl mb-2 text-center sm:text-left overflow-hidden">
             STAY CONNECTED
@@ -20,12 +20,12 @@ const Newsletter = () => {
         </div>
 
         <h2 
-          className="subscribe-head text-white text-xl mx-6 mx-sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center md:text-left mt-5"
+          className="subscribe-head text-white text-xl flex-box mx-6 mx-sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center md:text-left mt-5"
         >
           Subscribe To Our Newsletter
         </h2>
 
-        <div className="overflow-hidden p-5 flex items-center">
+        <div className="overflow-hidden p-5 flex flex-box items-center">
           <input
             type="email"
             placeholder="Your Email"

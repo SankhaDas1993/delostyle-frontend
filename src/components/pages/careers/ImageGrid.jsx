@@ -25,12 +25,17 @@ const ImageGrid = () => {
   ];
 
   return (
-    <div className="flex justify-around items-center mx-2 p-5 md:p-20"> 
+    <div className="flex flex-wrap justify-around items-center mx-2 p-5 md:p-10 lg:p-20">
       {items.map((item, index) => (
-        <div key={index} className="w-64 h-64 rounded-lg overflow-hidden shadow-lg relative m-2"> {/* Adjusted margin */}
-          <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-          <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-75 p-2 h-20 flex items-center justify-center">
-            <p className="text-center font-medium text-[#00274D]" style={{ fontSize: "24px" }}>{item.title}</p>
+        <div
+          key={index}
+          className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2" /* Adjusting width based on screen size */
+        >
+          <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg relative">
+            <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+            <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-75 p-2 h-20 flex items-center justify-center">
+              <p className="text-center font-medium text-[#00274D]" style={{ fontSize: "16px", lineHeight: "1.5rem" }}>{item.title}</p>
+            </div>
           </div>
         </div>
       ))}

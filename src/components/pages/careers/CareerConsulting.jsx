@@ -18,58 +18,79 @@ export default function CareerConsulting(){
     
     return(
      <div className="flex flex-row mt-20" style={{height: "50rem", overflow: "hidden"}}>
-        <div className="h-full mt-5" style={{width: "520px"}}>
-          <img src={sideBorder} alt="side-border" className="h-50"/>
+        <div className="mt-5 career-hidden" style={{width: "520px"}}>
+          <img src={sideBorder} alt="side-border" className="h-[100%]"/>
         </div>
-        <div className="relative flex-col mb-2 p-20 mx-10 mt-10" >
+        <div className="relative flex-col sm:mb-2 p-20 mx-10 mt-10" >
           <img 
             src={blogBorder} 
             alt="blog-border-left" 
-            className="absolute left-0 top-0" 
+            className="absolute left-0 top-[-21px]" 
             style={{width: "248px", height: "213px"}} 
           />
          <div className="flex">
-  <div className="h-full overflow-hidden flex-1">
-    <div className="flex justify-start mb-5">
-      <img src={bulbIcon} alt="bulb-icon" className="bulb-icon mr-3" />
-      <h2 className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "20px" }}>YOUR CAREER WITH US</h2>
-    </div>
-    <div className="overflow-hidden mb-1" >
-      <p className="overflow-hidden text-ellipsis font-bold mb-5" style={{ fontSize: "50px" }}>
-      Careers In Consulting
-      </p>
-
-    </div>
-    <div className="overflow-hidden w-2/3 mb-10">
-      <p className="mb-2 text-[#777777]" style={{ fontSize: "18px" }}>
-      Looking for Fun at Work! Join us to get the perfect environment and work culture.
-      </p>
-      <p className="text-[#777777]" style={{ fontSize: "18px" }}>
-      We ensure healthy and safe environment for our employees. Providing all facility on time is our specialty. We have successfully created a team of experts along with a healthy environment. Keep following us to become a part of our team.
-      </p>
-
-
-    </div>
-    
-    {listItems.map((item, index) => (
-        <div className="flex justify-start mb-2" key={index}>
-          <img src={aboutListIcon} alt="bulb-icon" className="about-icon mr-3" style={{height:"20px",width:"20px"}}/>
-          <p className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "18px" }}>
-            {item}
-          </p>
-        </div>
-      ))}
+         <div className="h-full overflow-hidden flex-1">
+  <div className="flex justify-start mb-5 ">
+    <img 
+      src={bulbIcon} 
+      alt="bulb-icon" 
+      className="bulb-icon mr-3 w-6 md:w-8 lg:w-8 " 
+    />
+    <h2 
+      className="text-orange-500 text-base md:text-lg lg:text-xl mb-2 overflow-hidden"
+    >
+      YOUR CAREER WITH US
+    </h2>
   </div>
-  <div className="absolute right-[240px] top-[200px]">
-  <img src={dottedBg} alt="side-dotted" style={{ width: "96px", height: "400px" }} />
+
+  <div className="overflow-hidden mb-1">
+    <p 
+      className="overflow-hidden text-ellipsis font-bold text-xl md:text-3xl lg:text-5xl mb-5 h-[60px]"
+    >
+      Careers In Consulting
+    </p>
+  </div>
+
+  <div className="overflow-hidden w-full md:w-3/4 lg:w-2/3 mb-10">
+    <p 
+      className="mb-2 text-[#777777] text-sm md:text-base lg:text-lg" 
+    >
+      Looking for Fun at Work! Join us to get the perfect environment and work culture.
+    </p>
+    <p 
+      className="text-[#777777] text-sm md:text-base lg:text-lg"
+    >
+      We ensure a healthy and safe environment for our employees. Providing all facilities on time is our specialty. We have successfully created a team of experts along with a healthy environment. Keep following us to become a part of our team.
+    </p>
+  </div>
+
+  {listItems.map((item, index) => (
+    <div className="flex justify-start mb-2" key={index}>
+      <img 
+        src={aboutListIcon} 
+        alt="about-icon" 
+        className="about-icon mr-3" 
+        style={{ height: "16px", width: "16px" }} 
+      />
+      <p className="text-orange-500 text-base md:text-lg lg:text-xl mb-2 overflow-hidden">
+        {item}
+      </p>
+    </div>
+  ))}
+</div>
+
+  <div className="absolute right-[179px] top-[200px] w-[96px] h-[400px] career-image career-hidden career-absolute-right ">
+  <img src={dottedBg} alt="side-dotted " />
   </div>
 </div>
- <hr className="mt-24 border-dashed border-2 opacity-20 mx-0" style={{ borderColor: "#00274D", width: "65%" }} />
+<div className="w-[100%] absolute bottom-0">
+ <hr className="mt-24 border-dashed border-2 opacity-20 mx-0 career-width career-hidden bg-[#00274D] w-[55%]"  />
+ </div>
           <img 
             src={blogBorder} 
             alt="blog-border-right " 
-            className="absolute right-[120px] bottom-[45px] transform rotate-180" 
-            style={{width: "248px", height: "213px"}} 
+            className="absolute right-[10px] bottom-[0px] transform rotate-180 w-[248px] h-[213px]" 
+           
           />
         </div>
       </div>

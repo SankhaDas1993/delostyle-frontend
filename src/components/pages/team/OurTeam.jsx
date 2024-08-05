@@ -7,6 +7,7 @@ import RequirementProcess from "./RequirementProcess";
 import Newsletter from "../newsletter/Newsletter";
 import SocialUpdates from "../socialUpdates/SocialUpdates";
 import Footer from "../footer/Footer";
+import RequirementProcessCommon from "../RequirementProcess/RequirementProcessCommon";
 
 export default function OurTeam(){
 
@@ -17,6 +18,7 @@ export default function OurTeam(){
         <Testimonial/>
         <TeamBanner2/>
         <RequirementProcess/>
+        {/* <RequirementProcessCommon/> */}
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>
