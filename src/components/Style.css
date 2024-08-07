@@ -189,3 +189,40 @@ border: 1px solid #D9D9D9;
     top: 280px;
   }
 }
+
+
+@media screen and (min-width : 1277px) {
+  .flex-direction{
+    flex-direction: row !important; 
+  }
+}
+
+@media screen and (max-width : 1277px) {
+  .flex-direction{
+    flex-direction: column !important; 
+  }
+}
+
+@media screen and (max-width : 493px) {
+  .width-change{
+    width: 406px !important;
+  }
+}
+
+@media screen and (max-width : 520px) {
+  .change-width{
+    width: 452px !important;
+  }
+}
+
+@media screen and (min-width : 520px) {
+  .change-width{
+    width: 500px !important;
+  }
+}
+
+@media screen and (max-width : 1024px) {
+  .hide-this{
+    display: none;
+  }
+}

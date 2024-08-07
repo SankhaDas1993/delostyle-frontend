@@ -11,9 +11,6 @@ export default function GetQuote(){
         <>
         <Navbar/>
         <Form/>
-
-
-        
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>

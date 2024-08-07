@@ -129,7 +129,6 @@ const SocialUpdates = () => {
             backgroundImage: `url(${updateBg})`, 
             backgroundSize: 'cover', 
             padding: '20px', 
-            minHeight: '50vh', 
             width: '100%', 
             position: 'relative', 
             overflow: 'hidden',

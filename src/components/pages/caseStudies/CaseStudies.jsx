@@ -16,9 +16,6 @@ export default function CaseStudies(){
         <Navbar/>
         <CaseBanner/>
         <ProjectList/>
-  
-
-
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>

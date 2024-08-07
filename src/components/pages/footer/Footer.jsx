@@ -13,16 +13,16 @@ const Footer = () => {
             <img src={logo} alt="Delostyle Logo" className="h-20 mb-4 absolute top-0 left-0 absolute-screen" />
             <p className="text-gray-500 w-[350px] absolute left-0  mt-5 absolute-screen">Innovation Generation. Our team is inclined towards the client requirement and deliver with quality.</p>
             <div className="flex space-x-4  sm: absolute bottom-0 left-0 absolute-screen">
-              <a href="#" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
+              <a href="https://www.facebook.com/officialdelostylestudio/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
                 <FontAwesomeIcon icon={faFacebookF} size="lg" />
               </a>
-              <a href="#" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
+              <a href="https://www.youtube.com/@delostylestudio8426" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
                 <FontAwesomeIcon icon={faYoutube} size="lg" />
               </a>
-              <a href="#" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
+              <a href="https://www.instagram.com/delostylestudio/" target="_blank" rel="noopener noreferrer"  className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
                 <FontAwesomeIcon icon={faInstagram} size="lg" />
               </a>
-              <a href="#" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
+              <a href="https://in.linkedin.com/company/delostylestudio" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-white bg-orange-500 rounded-full p-2 h-10 w-10">
                 <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
               </a>
             </div>

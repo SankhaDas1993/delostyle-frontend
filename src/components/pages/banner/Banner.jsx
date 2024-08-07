@@ -10,7 +10,7 @@ const Banner = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  console.log(width)
+
   return (
     <div
    className={width >= 1381 

@@ -17,16 +17,16 @@ export default function CareerConsulting(){
   ];
     
     return(
-     <div className="flex flex-row mt-20" style={{height: "50rem", overflow: "hidden"}}>
-        <div className="mt-5 career-hidden" style={{width: "520px"}}>
+     <div className="flex flex-row mt-20 h-[50rem] overflow-hidden">
+        <div className="mt-5 career-hidden w-[520px]">
           <img src={sideBorder} alt="side-border" className="h-[100%]"/>
         </div>
         <div className="relative flex-col sm:mb-2 p-20 mx-10 mt-10" >
           <img 
             src={blogBorder} 
             alt="blog-border-left" 
-            className="absolute left-0 top-[-21px]" 
-            style={{width: "248px", height: "213px"}} 
+            className="absolute left-0 top-[-21px] w-[248px] h-[213px]" 
+           
           />
          <div className="flex">
          <div className="h-full overflow-hidden flex-1">
@@ -69,8 +69,8 @@ export default function CareerConsulting(){
       <img 
         src={aboutListIcon} 
         alt="about-icon" 
-        className="about-icon mr-3" 
-        style={{ height: "16px", width: "16px" }} 
+        className="about-icon mr-3 w-[16px] h-[16px]" 
+        
       />
       <p className="text-orange-500 text-base md:text-lg lg:text-xl mb-2 overflow-hidden">
         {item}
