@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Stepper = () => {
+  
   const steps = [
     "Identify the business requirements",
     "Identify possible resources",

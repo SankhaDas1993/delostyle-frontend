@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Slider from "react-slick";
 import google from "../../images/google.png";
@@ -11,7 +11,17 @@ import bulbIcon from "../../images/bulbIcon.png";
 import Services from './Services';
 import "./feedback.css";
 
-const FeedBack = () => {
+const FeedBack = ({data,loading}) => {
+    const [feedbackDataget, setFeedbackDataget] = useState({})
+    const [load, setLoading] = useState(loading)
+  
+    useEffect(() => {
+        setFeedbackDataget(data?.feedbackData)
+      setLoading(loading)
+    }, [data])
+    console.log(feedbackDataget)
+    console.log(load);
+
     const feedbackData = [
         { id: 1, title: 'Google', description: 'This is the first feedback card.', tags: ['tag1', 'tag2'], imageUrl: google, rating: 4.4 },
         { id: 2, title: 'Facebook', description: 'This is the second feedback card.', tags: ['tag3', 'tag4'], imageUrl: facebook, rating: 3.8 },
@@ -108,15 +118,18 @@ const FeedBack = () => {
             <div className="flex flex-col items-center text-center p-10 rounded-lg m-5 relative z-10">
                 <div className="flex mb-5">
                     <img src={bulbIcon} alt="bulb-icon" className="bulb-icon" />  
-                    <h2 className="text-orange-500 text-xl mb-2" style={{ fontSize: "20px" }}>OUR SERVICES</h2>
+                    <h2 className="text-orange-500 text-xl mb-2" style={{ fontSize: "20px" }}>{load ? "OUR SERVICES" : feedbackDataget?.serviceHeader}</h2>
                 </div>
-                <h2 className="text-4xl font-bold mb-4 overflow-hidden">Solutions For Your Company</h2>
+                <h2 className="text-4xl font-bold mb-4 overflow-hidden">{load ? "Solutions For Your Company" : feedbackDataget?.solutionsHeader}</h2>
                 <p className="text-base text-gray-600 mb-6">
-                    We are a young and creative company and we offer you fresh business ideas.
+                {load ? "  We are a young and creative company and we offer you fresh business ideas." : feedbackDataget?.firstParagraph}
+                  
                 </p>
                 <p className="text-base text-gray-600 mb-6">
-                    We are a group of industry experts who help you create the perfect strategies to take your business to the next level.
+                {load ? "  We are a group of industry experts who help you create the perfect strategies to take your business to the next level." : feedbackDataget?.secondParagraph}
+                  
                 </p>
+                <button className="bg-orange-500 text-white py-2 px-4 lg:py-3 lg:px-6 rounded-full text-sm lg:text-lg mt-4">{load ? "Explore Solutions" : feedbackDataget?.buttonText}</button>
                 <div className="feedback-section">
                     <Services />
                 </div>

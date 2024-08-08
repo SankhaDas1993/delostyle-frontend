@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import bulbIcon from "../../images/bulbIcon.png"
 import blogBorder from "../../images/blogBorder.png"
 import sideBorder from "../../images/sideBorder.png"
@@ -9,7 +9,16 @@ import p3 from "../../images/p3.png"
 
 
 
-export default function Process(){
+export default function Process({data,loading}){
+  const [processData, setProcessData] = useState({})
+  const [load, setLoading] = useState(loading)
+
+  useEffect(() => {
+    setProcessData(data?.processData)
+    setLoading(loading)
+  }, [data])
+  console.log(processData)
+  console.log(load);
 
     return(
               <div className="flex flex-row items-center justify-center mt-20 overflow-hidden" style={{height: "75rem"}}>
@@ -27,17 +36,21 @@ export default function Process(){
   <div className="h-full overflow-hidden flex-1">
     <div className="flex justify-start mb-5">
       <img src={bulbIcon} alt="bulb-icon" className="bulb-icon mr-3" />
-      <h2 className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "20px" }}>OPERATIONAL PROCESS</h2>
+      <h2 className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "20px" }}>
+      {load ? "OPERATIONAL PROCESS" : processData?.title}
+      </h2>
     </div>
     <div className="overflow-hidden mb-1" >
       <p className="overflow-hidden text-ellipsis font-bold mb-5" style={{ fontSize: "56px" }}>
-      Driving Business Success <br/> Through Operational Excellence <br/> And Cutting-Edge Technology
+      {load ? " Driving Business Success Through Operational Excellence And Cutting-Edge Technology" : processData?.heading}
+     
       </p>
 
     </div>
     <div className="overflow-hidden w-2/3 mb-10">
       <p className="text-[#777777]" style={{ fontSize: "18px" }}>
-      Operational processes are the backbone of any business, essential for its smooth functioning and growth. They ensure efficiency, productivity, and ultimately drive the business forward. Get fresh HR ideas from this young and creative company
+      {load ? "Operational processes are the backbone of any business, essential for its smooth functioning and growth. They ensure efficiency, productivity, and ultimately drive the business forward. Get fresh HR ideas from this young and creative company" : processData?.description}
+      
       </p>
 
 

@@ -7,17 +7,21 @@ import OurClientWork from "./OurClientWork";
 import Newsletter from "../newsletter/Newsletter"
 import SocialUpdates from "../socialUpdates/SocialUpdates"
 import Footer from "../footer/Footer"
+import useClient from "./clientFn/apiClient";
+
 
 
 export default function OurClients(){
+    const { data, isError, isLoading, refetch} = useClient()
+    console.log(isLoading, "is load")
 
     return(
         <div className="overflow-hidden">
         <Navbar/>
-        <ClientsBanner/>
-        <ClientBenifits/>
-        <OurVision/>
-        <OurClientWork/>
+        <ClientsBanner data ={data} loading={isLoading}/>
+        <ClientBenifits data ={data} loading={isLoading}/>
+        <OurVision data ={data} loading={isLoading}/>
+        <OurClientWork data ={data} loading={isLoading}/>
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>

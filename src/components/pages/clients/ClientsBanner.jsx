@@ -2,7 +2,16 @@ import React, { useState, useEffect } from 'react';
 import bulbIcon from "../../images/bulbIcon.png";
 import clientBanner from "../../images/clientBanner1.png";
 
-const ClientsBanner = () => {
+const ClientsBanner = ({data,loading}) => {
+  const [client_BannerData, setClient_BannerData] = useState({})
+  const [load, setLoading] = useState(loading)
+
+  useEffect(() => {
+    setClient_BannerData(data?.client_BannerData)
+    setLoading(loading)
+  }, [data])
+  console.log(client_BannerData)
+  console.log(load);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -36,13 +45,16 @@ const ClientsBanner = () => {
           </div>
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-white overflow-hidden py-2 font-bold mb-3 md:mb-5 text-2xl md:text-4xl lg:text-5xl leading-relaxed lg:w-[800px]">
-              We Pride Ourselves On Exceeding Our Client's Expectations
+            {load ? "We Pride Ourselves On Exceeding Our Client's Expectations" : client_BannerData?.pride}
+            
             </h2>
             <p className="text-white mt-3 md:mt-5 text-base md:text-xl lg:text-2xl text-center md:text-left">
-              Our commitment to excellence has allowed us to build strong relationships with a diverse range of clients. Here, you can find some of the clients we have worked with.
+            {load ? "   Our commitment to excellence has allowed us to build strong relationships with a diverse range of clients. Here, you can find some of the clients we have worked with." : client_BannerData?.commitment}
+           
             </p>
             <div className="w-full flex justify-center md:justify-start mt-5 md:mt-8">
               <button className="bg-orange-500 text-white py-2 px-4 md:px-6 rounded-full text-sm md:text-lg lg:text-xl">
+               
                 Let's get together
               </button>
             </div>

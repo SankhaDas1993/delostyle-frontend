@@ -1,11 +1,20 @@
 
-import React from "react";
+import React,{useState,useEffect} from "react";
 import bulbIcon from "../../images/bulbIcon.png";
 import aboutBanner2 from "../../images/aboutBnner2.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-export default function OurClientVision() {
+export default function OurClientVision({data,loading}) {
+  const [client_VisionData, setClient_VisionData] = useState({})
+  const [load, setLoading] = useState(loading)
+
+  useEffect(() => {
+    setClient_VisionData(data?.client_VisionData)
+    setLoading(loading)
+  }, [data])
+  console.log(client_VisionData)
+  console.log(load);
   return (
     <div
       className="relative bg-blue-50 bg-center bg-no-repeat bg-cover"
@@ -20,10 +29,12 @@ export default function OurClientVision() {
           </div>
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-5">
-              The Operational Processes Are What Drives The Business
+            {load ? "The Operational Processes Are What Drives The Business" : client_VisionData?.Operational_Processes}
+            
             </h2>
             <p className="text-white text-lg md:text-xl lg:text-2xl mb-5">
-              We specialize in the project delivery model that combines strategy and cutting-edge technology into businesses, hence enabling cost efficiency across the departments.
+            {load ? " We specialize in the project delivery model that combines strategy and cutting-edge technology into businesses, hence enabling cost efficiency across the departments." : client_VisionData?.specialize}
+             
             </p>
             <button className="bg-orange-500 text-white py-2 px-6 rounded-full text-lg md:text-xl flex items-center">
               Watch Story <FontAwesomeIcon icon={faPlay} className="ml-2" />

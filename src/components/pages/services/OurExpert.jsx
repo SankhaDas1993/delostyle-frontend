@@ -1,12 +1,21 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import bulbIcon from "../../images/bulbIcon.png"
 import ourexper from "../../images/ourexper.png"
 
-export default function OurExpert(){
+export default function OurExpert({data,loading}){
+  const [ourExpertData, setOurExpertData] = useState({})
+  const [load, setLoading] = useState(loading)
+
+  useEffect(() => {
+    setOurExpertData(data?.ourExpertData)
+    setLoading(loading)
+  }, [data])
+  console.log(ourExpertData)
+  console.log(load);
 
     return(
         <div 
-        className="consulting-banner overflow-hidden relative flex bg-center bg-no-repeat bg-cover mt-10 overflow-hidden"
+        className="consulting-banner  relative flex bg-center bg-no-repeat bg-cover mt-10 overflow-hidden"
         style={{
           background: 'linear-gradient(108.17deg, #00274D 32.68%, #005BB3 100.49%)',height:"550px"
         }}
@@ -25,7 +34,8 @@ export default function OurExpert(){
       Our Experts Will Make Bring Your Ideas To Life 
       </h1>
       <p className="mt-1 overflow-hidden" style={{ fontSize: "18px", padding: "10px 0" }}>
-      Our experts will materialize your ideas and meticulously create the touchpoints necessary to ensure high-quality deliverables.
+      {load ? "Our experts will materialize your ideas and meticulously create the touchpoints necessary to ensure high-quality deliverables." : ourExpertData?.description}
+    
       </p>
       <button className="bg-orange-500 text-white py-2 px-6 rounded-full mt-10" style={{ fontSize: "20px" }}>Connect To Our Experts</button>
     </div>

@@ -1,9 +1,22 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import bulbIcon from "../../images/bulbIcon.png";
 import dottedBg from "../../images/dottedBg.png";
+import useCareer from "../careers/careerFn/apiCareers";
 
 
 export default function RequirementProcessCommon() {
+  const { data, isError, isLoading, refetch} = useCareer()
+  console.log(isLoading, "is load")
+  const [carrer_WorkData, setCarrer_WorkData] = useState({})
+  const [load, setLoading] = useState()
+
+  useEffect(() => {
+    setCarrer_WorkData(data?.carrer_WorkData)
+    setLoading(isLoading)
+  }, [data])
+  console.log(carrer_WorkData)
+  console.log(load);
+
   return (
     <div className="relative flex flex-col items-center justify-center px-5 py-10" style={{ overflow: "hidden" }}>
       <div className="relative flex flex-col items-center justify-center p-5 md:p-6 lg:p-8 xl:p-10 mx-5 mb-2">
@@ -17,11 +30,13 @@ export default function RequirementProcessCommon() {
 
           <div className="mb-5 text-center md:text-left">
             <p className="text-lg md:text-lg lg:text-xl xl:text-2xl font-bold mb-5 whitespace-wrap w-full md:w-[600px] mx-auto md:mx-0">
-              Streamlined Recruitment Process For Exceptional Talent Acquisition
+            {load ? " Streamlined Recruitment Process For Exceptional Talent Acquisition" : carrer_WorkData?.Streamlined}
+             
             </p>
             <div className="mb-8">
               <p className="text-sm md:text-base lg:text-lg xl:text-lg text-gray-600 mx-auto md:mx-0 whitespace-wrap w-full md:w-[600px] lg:w-[842px]">
-                At Delostyle Studio, we excel at identifying and selecting top-tier talent tailored to your company's unique needs. Our recruitment process is designed to streamline the acquisition of exceptional candidates who will contribute to your organization's success.
+              {load ? "  At Delostyle Studio, we excel at identifying and selecting top-tier talent tailored to your company's unique needs. Our recruitment process is designed to streamline the acquisition of exceptional candidates who will contribute to your organization's success." : carrer_WorkData?.Delostyle}
+              
               </p>
             </div>
           </div>

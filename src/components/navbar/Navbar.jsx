@@ -6,6 +6,7 @@ import { faFacebook, faInstagram, faYoutube, faLinkedin } from '@fortawesome/fre
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const[toggleOn,setToggleOn]=useState();
 
   const handleDropdownClick = (menu) => {
     if (dropdownOpen === menu) {

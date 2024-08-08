@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import bulbIcon from '../../images/bulbIcon.png';
 import careerForm from "../../images/careerForm.png";
 
-const CareerForm = () => {
+const CareerForm = ({data,loading}) => {
+  const [carrer_FormData, setCarrer_FormData] = useState({})
+  const [load, setLoading] = useState(loading)
+
+  useEffect(() => {
+    setCarrer_FormData(data?.carrer_FormData)
+    setLoading(loading)
+  }, [data])
+  console.log(carrer_FormData)
+  console.log(load);
   const [fileName, setFileName] = useState('');
 
   const handleFileChange = (event) => {
@@ -34,12 +43,12 @@ const CareerForm = () => {
             </div>
             <div className="flex flex-col items-start">
               <h1 className="text-white text-xl md:text-3xl md:w-[600px] lg:text-4xl font-bold mb-4">
-                We Are Trusted Consulting Firm
+              {load ? " We Are Trusted Consulting Firm" : carrer_FormData?.Trusted}
+               
               </h1>
               <p className="text-base md:text-lg md:w-[500px] lg:text-xl mb-4">
-                We offer unparalleled expertise, innovative solutions, and dedicated support to help
-                your business thrive. Join forces with us and experience the difference that true
-                partnership makes.
+              {load ? " We offer unparalleled expertise, innovative solutions, and dedicated support to help your business thrive. Join forces with us and experience the difference that true partnership makes." : carrer_FormData?.unparalleled}
+               
               </p>
 
               <div
@@ -115,7 +124,7 @@ const CareerForm = () => {
             </div>
           </div>
           <div className="w-full md:w-1/2 hidden lg:block lg:ml-10">
-            <img src={careerForm} alt='career-img' className="w-full h-[800px] md:h-[900px] lg:h-[900px] lg:w-[900px] lg:mx-20 object-cover" />
+            <img src={load ? careerForm : carrer_FormData?.base64Image} alt='career-img' className="w-full h-[800px] md:h-[900px] lg:h-[900px] lg:w-[900px] lg:mx-20 object-cover" />
           </div>
         </div>
       </div>

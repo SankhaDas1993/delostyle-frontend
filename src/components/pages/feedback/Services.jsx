@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import frontend from '../../images/frontend.png';
 import desktop from '../../images/desktop.png';
 import mobile from '../../images/mobile.png';
@@ -32,35 +32,31 @@ const Services = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  
-
   const visibleCards = showAll || !isSmallScreen ? services : services.slice(0, 4);
 
   return (
     <div className="relative z-10 p-10">
-      <div className="flex-col grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${isSmallScreen ? 'grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'} gap-10">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${isSmallScreen ? 'grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'} gap-10`}>
         {visibleCards.map((service, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center bg-white p-6 rounded-lg text-center
-              ${isSmallScreen ? 'h-10 w-10' : 'h-30vh w-27vh'} 
-            shadow-lg`}"
+            className={`flex flex-col items-center justify-center bg-white p-6 rounded-lg text-center shadow-lg 
+              hover:bg-[#f3f4f6] transition-colors duration-300 ease-in-out
+              ${isSmallScreen ? 'h-10 w-10' : 'h-30vh w-27vh'}`}
             style={{
               height: "30vh",
               width: "27vh",
               boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5)"
             }}
-            
           >
             <div className="mb-4">
-              <img src={service.icon} alt={service.title} className="w-15 h-20 ${isSmallScreen ? 'h-12' : 'h-20'}`}" />
+              <img src={service.icon} alt={service.title} className={`w-15 h-20 ${isSmallScreen ? 'h-12' : 'h-20'}`} />
             </div>
             <h2 className="text-lg font-semibold">{service.title}</h2>
           </div>
         ))}
       </div>
-    
-  
+
       {isSmallScreen && (
         <div className="flex justify-center mt-6">
           {!showAll && services.length > 4 && (

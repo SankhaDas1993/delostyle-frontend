@@ -1,10 +1,19 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import bulbIcon from "../../images/bulbIcon.png";
 import sideBorder from "../../images/sideBorder.png";
 import blogBorder from "../../images/blogBorder.png";
 import dottedbg from "../../images/dottedBg.png";
 
-export default function WhatWeDo() {
+export default function WhatWeDo({data,loading}) {
+  const [whatWeDoData, setWhatWeDoData] = useState({})
+  const [load, setLoading] = useState(loading)
+
+  useEffect(() => {
+    setWhatWeDoData(data?.whatWeDoData)
+    setLoading(loading)
+  }, [data])
+  console.log(whatWeDoData)
+  console.log(load);
   return (
     <>
       <div className="flex flex-row items-center justify-center lg:h-[1015px] md:[883px] h-[1015px]" style={{ overflow: "hidden" }}>
@@ -25,16 +34,22 @@ export default function WhatWeDo() {
               </div>
               <div className="mb-1">
                 <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 whitespace-normal leading-relaxed">
-                  We Bring Your Vision To Life
-                  By Transforming Your Ideas Into Reality
+                {load ? "We Bring Your Vision To Life By Transforming Your Ideas Into Reality" : whatWeDoData?.headingText}
+                  
+                </h2>
+                <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-6 whitespace-normal leading-relaxed">
+                {load ? "By Transforming Your Ideas Into Reality To Life " : whatWeDoData?.subHeadingText1}
+                  
                 </h2>
               </div>
               <div className="w-full md:w-2/3 mb-10 mt-10">
                 <p className="text-gray-600 text-sm md:text-base lg:text-lg xl:text-xl mb-5 leading-relaxed" style={{ fontSize: "20px" }}>
-                  We bring your ideas to life through a meticulous process of development and refinement.
+                {load ? " We bring your ideas to life through a meticulous process of development and refinement." : whatWeDoData?.paragraphText1}
+                 
                 </p>
                 <p className="text-gray-600 text-sm md:text-base lg:text-lg xl:text-xl leading-relaxed" style={{ fontSize: "20px" }}>
-                  Our team works closely with you to understand your vision and objectives, transforming your concepts into tangible, high-quality deliverables. By establishing key touchpoints throughout the project, we ensure that every detail aligns with your expectations. Our commitment to excellence guarantees that the final product not only meets but exceeds your standards, delivering results that make a lasting impact.
+                {load ? "Our team works closely with you to understand your vision and objectives, transforming your concepts into tangible, high-quality deliverables. By establishing key touchpoints throughout the project, we ensure that every detail aligns with your expectations. Our commitment to excellence guarantees that the final product not only meets but exceeds your standards, delivering results that make a lasting impact." : whatWeDoData?.paragraphText2}
+                  
                 </p>
               </div>
             </div>

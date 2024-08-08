@@ -16,10 +16,15 @@ import OurMission from "./OurMission";
 import OurWork from "./OurWork";
 import Priority from "./Priority";
 import RequirementProcess from "./RequirementProcess";
+import useAbout from "./aboutFn/apiAbout";
+
 
 
 export default function About (){
-
+    const { data, isError, isLoading, refetch} = useAbout()
+    console.log(data, "about data")
+    console.log(isError, "here is the error")
+    console.log(isLoading, "here is the loader")
     return(
         <div className="overflow-hidden">
             <Navbar/>
