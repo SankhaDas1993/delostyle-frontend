@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import bulbIcon from "../../../images/bulbIcon.png"
 import ourmission1 from "../../../images/ourmission1.png"
 import ourmission2 from "../../../images/ourmission2.jpg"
@@ -8,15 +8,19 @@ import howitwork  from "../../../images/howitwork.jpg"
 
 
 
-export default function PbmWorks(){
-
+export default function PbmWorks({data,loading}){
+  const [pbmWorksData, setPbmWorksData] = useState({})
+  const [load, setLoading] = useState(loading)
     const data2 = [
         { id: 1, title: "Project Assessment",desc:"We initiate the process by collaborating closely with you to define the project's scope, objectives, and expectations." },
         { id: 2, title: "Strategy Formulation",desc:"Our IT consulting service experts develop a tailored strategy that outlines the project's roadmap, ensuring it aligns with your specific goals." },
         { id: 3, title: "Execution Excellence",desc:"Our dedicated team leverages their proficiency in Development, Digital Marketing, Content Writing, BPO services, Graphic Designing, PPC, KPC, and other tech solutions." },
         {id:4,title:"Regular Updates",desc:"We maintain transparent communication throughout the project, providing regular updates and progress reports to keep you informed."},
     ]
-    
+    useEffect(() => {
+      setPbmWorksData(data?.pbmWorksData)
+      setLoading(loading)
+    }, [data])
     
     return(
         <div
@@ -37,15 +41,16 @@ export default function PbmWorks(){
            
             <div className="flex flex-col items-start">
               <h1 className="text-black overflow-hidden font-bold" style={{ fontSize: "44px" }}>
-              How Does PBM Works?
+             {load ? "How Does PBM Works?":pbmWorksData?.mainHeading}
               </h1>
               <p className="mt-1 overflow-hidden text-[#777777]" style={{ fontSize: "20px", padding: "20px 0" }}>
-              The Project-Based Model (PBM) is crafted to deliver seamless integration of specialized professionals into your project teams. Beginning with a comprehensive assessment of your project requirements, we meticulously select experts in Development, Digital Marketing, Content Writing, non-voice BPO services, Graphic Designing, PPC, KPC, and more. This model prioritizes flexibility, efficiency, and cost-effectiveness, guaranteeing precise and excellent project outcomes tailored to your specific needs.
+              {load ? "The Project-Based Model (PBM) is crafted to deliver seamless integration of specialized professionals into your project teams. Beginning with a comprehensive assessment of your project requirements, we meticulously select experts in Development, Digital Marketing, Content Writing, non-voice BPO services, Graphic Designing, PPC, KPC, and more. This model prioritizes flexibility, efficiency, and cost-effectiveness, guaranteeing precise and excellent project outcomes tailored to your specific needs.":pbmWorksData?.descriptionText}
               </p>
              
               
               <div className="flex gap-10 justify-items-center">
-                {data2.map((item) => (
+              {(pbmWorksData?.listItems ? pbmWorksData.listItems : data2).map((item) => (
+
                     <div
                      key={item.id}
                      className="bg-white p-4 shadow-lg rounded-2xl flex flex-col items-start space-y-2 border border-[#D9D9D9] shadow-md"

@@ -2,7 +2,8 @@ import React from 'react';
 import bulbIcon from "../../../images/bulbIcon.png";
 // import Services from './Services';
 
-const KnowSM = () => {
+const KnowSM = ({supportData}) => {
+// console.log(supportData?.knowSMData?.mainHeading,"supportDatasupportData")
  
 
     return (
@@ -12,10 +13,12 @@ const KnowSM = () => {
        <img src={bulbIcon} alt="bulb-icon" className="bulb-icon" />  <h2 className="text-orange-500 text-xl mb-2" style={{fontSize:"20px"}}>KNOW US BETTER</h2>
        </div>
      
-      <h2 className="font-bold mb-6  overflow-hidden  whitespace-normal w-[980px]" style={{fontSize:"46px"}}>Discover Our Responsive Support Model For Dynamic IT Assistance</h2>
-      <p className="text-base text-gray-600 mb-6">
+      {/* <h2 className="font-bold mb-6  overflow-hidden  whitespace-normal w-[980px]" style={{fontSize:"46px"}}>Discover Our Responsive Support Model For Dynamic IT Assistance</h2> */}
+      <h2 className="font-bold mb-6  overflow-hidden  whitespace-normal w-[980px]" style={{fontSize:"46px"}}>{supportData?.knowSMData?.mainHeading}</h2>
+      {/* <p className="text-base text-gray-600 mb-6">
       Experience our dedication to excellence through the Support Model. We assume full responsibility for delivering customized solutions that precisely meet your IT needs with efficiency and precision. Partner with us to harness expert guidance that drives continuous improvement and success for your business.
-      </p>
+      </p> */}
+      <p className="text-base text-gray-600 mb-6">{supportData?.knowSMData?.descriptionText}</p>
     
     </div>
     <div className="flex items-center justify-center z-20">

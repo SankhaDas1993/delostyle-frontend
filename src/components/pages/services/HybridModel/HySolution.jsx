@@ -6,57 +6,53 @@ import dottedBg from "../../../images/dottedBg.png"
 import aboutListIcon from "../../../images/aboutListIcon.png"
 
 
-export default function HySolution(){
+export default function HySolution({hybrid_data}){
 
-  const listItems = [
-    "Hour Based Services",
-    "Development Of Risk Free Models",
-    "Perfect Skill Match",
-    "Fit To Your Budget",
-    "Flexibility Based On Requirement",
-  ];
+
+  const listItems = hybrid_data?.listItems
+  ;
     
     return(
      <div className="flex flex-row mt-10 mb-10" style={{height: "55rem", overflow: "hidden"}}>
         <div className="h-full mt-5" style={{width: "520px"}}>
           <img src={sideBorder} alt="side-border" style={{height:"810px"}}/>
         </div>
-        <div className="relative flex-col mb-2 p-10 mx-10 mt-5" >
+        <div className="relative flex-col p-10 mx-10 mt-5 mb-2" >
           <img 
             src={blogBorder} 
             alt="blog-border-left" 
-            className="absolute left-0 top-0" 
+            className="absolute top-0 left-0" 
             style={{width: "248px", height: "213px"}} 
           />
          <div className="flex">
-  <div className="h-full overflow-hidden flex-1 mx-5">
+  <div className="flex-1 h-full mx-5 overflow-hidden">
     <div className="flex justify-start mb-5">
-      <img src={bulbIcon} alt="bulb-icon" className="bulb-icon mr-3" />
-      <h2 className="text-orange-500  overflow-hidden" style={{ fontSize: "20px" }}>HYBRID MODEL</h2>
+      <img src={bulbIcon} alt="bulb-icon" className="mr-3 bulb-icon" />
+      <h2 className="overflow-hidden text-orange-500" style={{ fontSize: "20px" }}>{hybrid_data?.subHeading}</h2>
     </div>
     <div className="overflow-hidden" >
       <p className="overflow-hidden text-ellipsis font-bold mb-5 whitespace-normal w-[826px]" style={{ fontSize: "40px" }}>
-      Hybrid Model Solutions for Your Company, Integrated IT Consulting Services
+      {hybrid_data?.mainHeading}
       </p>
 
     </div>
-    <div className="overflow-hidden w-2/3 mb-5">
+    <div className="w-2/3 mb-5 overflow-hidden">
       <p className="mb-2 text-[#777777]" style={{ fontSize: "18px" }}>
-      Connect to our experts to know more about Hybrid Model (HM)
+      {hybrid_data?.descriptionText1}
       </p>
       <p className="text-[#777777] mt-5" style={{ fontSize: "18px" }}>
-      Planning to run the entire IT solutions for your company. Focus on your business verticals and rely on us regarding all your IT and support needs. All your requirements can be handled by our specialized team members.
+      {hybrid_data?.descriptionText2}
       </p>
       <p className="mt-5 text-[#777777]" style={{ fontSize: "18px" }}>
-      Delostyle Studio proudly presents the “Hybrid Model” – a versatile approach that combines the strengths of different IT consulting services to meet your unique needs effectively. In an ever-evolving technological landscape, our Hybrid Model offers flexibility, innovation, and scalability to navigate the digital frontier.
+      {hybrid_data?.descriptionText3}
       </p>
 
     </div>
     
-    {listItems.map((item, index) => (
+    {listItems?.map((item, index) => (
         <div className="flex justify-start mb-2" key={index}>
-          <img src={aboutListIcon} alt="bulb-icon" className="about-icon mr-3" style={{height:"20px",width:"20px"}}/>
-          <p className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "18px" }}>
+          <img src={aboutListIcon} alt="bulb-icon" className="mr-3 about-icon" style={{height:"20px",width:"20px"}}/>
+          <p className="mb-2 overflow-hidden text-xl text-orange-500" style={{ fontSize: "18px" }}>
             {item}
           </p>
         </div>
@@ -66,7 +62,7 @@ export default function HySolution(){
   <img src={dottedBg} alt="side-dotted" style={{ width: "96px", height: "300px" }} />
   </div>
 </div>
- <hr className="mt-20 border-dashed border-2 opacity-20 mx-0" style={{ borderColor: "#00274D", width: "65%" }} />
+ <hr className="mx-0 mt-20 border-2 border-dashed opacity-20" style={{ borderColor: "#00274D", width: "65%" }} />
           <img 
             src={blogBorder} 
             alt="blog-border-right " 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import bulbIcon from "../../../images/bulbIcon.png"
 import ourmission1 from "../../../images/ourmission1.png"
 import ourmission2 from "../../../images/ourmission2.jpg"
@@ -8,8 +8,9 @@ import dhmDotted from "../../../images/dhmDotted.png"
 
 
 
-export default function WhyDHM(){
-
+export default function WhyDHM({data, loading}){
+  const [servicesWhyDHMData, setServicesWhyDHMData] = useState({})
+  const [load, setLoading] = useState(loading)
     const data2 = [
         { id: 1, title: "Customized Expertise",desc:"With this model, you have the freedom to access perfect tech solutions with our dedicated team that aligns perfectly with your project requirements. Whether you need a single specialist or a multi-disciplinary team, we've got you covered." },
         { id: 2, title: "Cost Efficiency",desc:"The Dedicated Hiring Model offers exceptional cost savings compared to traditional recruitment processes. You can tap into our talent pool without the overhead costs of hiring, training, and maintaining an in-house team." },
@@ -17,7 +18,10 @@ export default function WhyDHM(){
         {id:4,title:"Industry Expertise",desc:"Our IT consulting experts are well-versed in the latest industry trends and technologies. They bring a wealth of knowledge and hands-on experience to your projects, ensuring top-notch results."},
         
       ];
-    
+      useEffect(() => {
+        setServicesWhyDHMData(data?.whyDHMData)
+        setLoading(loading)
+      }, [data])
     
     return(
         <div 
@@ -42,14 +46,14 @@ export default function WhyDHM(){
            
             <div className="flex flex-col items-start">
               <h1 className="text-white overflow-hidden font-bold" style={{ fontSize: "56px" }}>
-              Why Choose The Dedicated Hiring <br/>Model?
+             {load ? "Why Choose The Dedicated Hiring Model":servicesWhyDHMData?.mainHeading}
               </h1>
               <p className="mt-1 overflow-hidden text-white" style={{ fontSize: "20px", padding: "20px 0"}}>
-              Our Dedicated Hiring Model (DHM) offers a flexible and client-centric approach to accessing a highly <br/>skilled team of IT professionals. This model is designed to provide cost-effective and efficient solutions <br/> tailored to meet your specific IT consulting needs.
+              {load ?"Our Dedicated Hiring Model (DHM) offers a flexible and client-centric approach to accessing a highly <br/>skilled team of IT professionals. This model is designed to provide cost-effective and efficient solutions <br/> tailored to meet your specific IT consulting needs.":servicesWhyDHMData?.descriptionText}
               </p>
              
               <div className="flex gap-5 mt-10 mx-2 justify-items-center">
-                {data2.map((item) => (
+              { (servicesWhyDHMData?.listItems ? servicesWhyDHMData.listItems : data2).map((item) =>(
                   <div
                     key={item.id}
                     className="bg-[#00274D]  z-30 border relative p-4 shadow-lg rounded-2xl flex flex-col items-start space-y-2"

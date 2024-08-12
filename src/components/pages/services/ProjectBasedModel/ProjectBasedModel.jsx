@@ -11,21 +11,21 @@ import PbmApproach from "./PbmApproach";
 import PbmEmpower from "./PbmEmpower";
 import PbmWorks from "./PbmWorks";
 import PbmOperation from "./PbmOperation";
-
+import useProject from "./projectFn/ProjectBased";
 
 export default function ProjectBasedModel(){
-
+    const { data, isError, isLoading, refetch} = useProject()
     return(
         <>
         <Navbar/>
-        <PbmSolution/>
+        <PbmSolution data ={data} loading={isLoading}/>
         <PbmGrid/>
-        <WhyPBM/>
-        <KnowPbm/>
-        <PbmApproach/>
-        <PbmEmpower/>
-        <PbmWorks/>
-        <PbmOperation/>
+        <WhyPBM data ={data} loading={isLoading}/>
+        <KnowPbm data ={data} loading={isLoading}/>
+        <PbmApproach />
+        <PbmEmpower data ={data} loading={isLoading}/>
+        <PbmWorks data ={data} loading={isLoading}/>
+        <PbmOperation data ={data} loading={isLoading}/>
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>

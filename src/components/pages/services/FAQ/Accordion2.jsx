@@ -23,7 +23,7 @@ const Accordion2 = () => {
   };
 
   return (
-    <div className="w-[700px]  rounded-md shadow-md">
+    <div className="w-full sm:w-[95%] md:w-[85%] lg:w-[750px] mx-4 rounded-md shadow-md">
       <AccordionItem
         title="1. How will we connect during our office hours? "
         isOpen={openIndex === 0}

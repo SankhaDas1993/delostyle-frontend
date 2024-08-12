@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import bulbIcon from "../../../images/bulbIcon.png"
 import aboutBanner2 from "../../../images/aboutBnner2.png"
 import empowerBanner  from "../../../images/empowerBanner.png"
@@ -6,10 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function PbmEmpower(){
+export default function PbmEmpower({data,loading}){
 
-
+  const [pbmEmpowerData, setPbmEmpowerData] = useState({})
+  const [load, setLoading] = useState(loading)
     
+  useEffect(() => {
+    setPbmEmpowerData(data?.pbmEmpowerData)
+    setLoading(loading)
+  }, [data])
     return(
         <div 
       className="consulting-banner relative bg-blue-50 flex  bg-center bg-no-repeat bg-cover"
@@ -24,8 +29,8 @@ export default function PbmEmpower(){
     <h2 className="text-orange-500 text-xl ml-4" style={{ fontSize: "20px" }}>MEET OUR EXPERTS</h2>
   </div>
   <div className="flex flex-col items-start">
-    <h2 className="text-white overflow-hidden py-2 font-bold mb-5" style={{ fontSize: "55px" }}>Experience Business Excellence With Our Project-Based Model</h2>
-    <p className="text-gray-700 text-white mt-5 overflow-hidden" style={{ fontSize: "24px"}}>Our experts are available to help your process run flawlessly. Get in touch with our experts and know more about PBM.
+    <h2 className="text-white overflow-hidden py-2 font-bold mb-5" style={{ fontSize: "55px" }}>{load?"Experience Business Excellence With Our Project-Based Model":pbmEmpowerData?.mainHeading}</h2>
+    <p className="text-gray-700 text-white mt-5 overflow-hidden" style={{ fontSize: "24px"}}>{load?"Our experts are available to help your process run flawlessly. Get in touch with our experts and know more about PBM.":pbmEmpowerData?.descriptionText}
 
 </p>
     <button className="bg-orange-500 text-white py-2 px-6 rounded-full mt-10" style={{ fontSize: "20px" }}>Watch Story<FontAwesomeIcon icon={faPlay} className="mx-2" /></button>

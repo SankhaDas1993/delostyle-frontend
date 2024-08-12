@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import bulbIcon from "../../../images/bulbIcon.png"
 import ourmission1 from "../../../images/ourmission1.png"
 import ourmission2 from "../../../images/ourmission2.jpg"
@@ -8,14 +8,19 @@ import howitwork  from "../../../images/howitwork.jpg"
 
 
 
-export default function HowItWorks(){
-
+export default function HowItWorks({data, loading}){
+  const [howItWorksData, setHowItWorksData] = useState({})
+  const [load, setLoading] = useState(loading)
     const data2 = [
         { id: 1, title: "Consultation",desc:"We start with a comprehensive consultation to understand your business goals and IT consulting requirements." },
         { id: 2, title: "Team Building",desc:"Based on your needs, we assemble a dedicated team of professionals with the right skillset and experience." },
         { id: 3, title: "Project Execution",desc:"Our dedicated team works collaboratively with you creating and offering IT consulting services that perfectly align with your project objectives." },
         {id:4,title:"Ongoing Support",desc:"We provide continuous support, regular updates, and transparent communication to ensure your project's success."},
     ]
+    useEffect(() => {
+      setHowItWorksData(data?.howItWorksData)
+      setLoading(loading)
+    }, [data])
     
     
     return(
@@ -37,15 +42,15 @@ export default function HowItWorks(){
            
             <div className="flex flex-col items-start">
               <h1 className="text-black overflow-hidden font-bold" style={{ fontSize: "44px" }}>
-              How Does DHM Works? 
+           {load ? "How Does DHM Works?":howItWorksData?.mainHeading}
               </h1>
               <p className="mt-1 overflow-hidden text-[#777777]" style={{ fontSize: "20px", padding: "20px 0" }}>
-              The Dedicated Hiring Model (DHM) is designed to seamlessly integrate skilled professionals into your team. It begins with a thorough understanding of your business needs, followed by the selection of specialized experts in areas such as Development, Digital Marketing, Content Writing, non-voice BPO services, Graphic Designing, PPC, KPC, and more. This model offers flexibility, efficiency, and cost-effectiveness, ensuring your projects are delivered with precision and excellence.
+           {load? "The Dedicated Hiring Model (DHM) is designed to seamlessly integrate skilled professionals into your team. It begins with a thorough understanding of your business needs, followed by the selection of specialized experts in areas such as Development, Digital Marketing, Content Writing, non-voice BPO services, Graphic Designing, PPC, KPC, and more. This model offers flexibility, efficiency, and cost-effectiveness, ensuring your projects are delivered with precision and excellence.":howItWorksData?.descriptionText}
               </p>
              
               
               <div className="flex gap-10 justify-items-center">
-                {data2.map((item) => (
+                {(howItWorksData?.listItems ? howItWorksData.listItems : data2).map((item) => (
                     <div
                      key={item.id}
                      className="bg-white p-4 shadow-lg rounded-2xl flex flex-col items-start space-y-2 border border-[#D9D9D9] shadow-md"

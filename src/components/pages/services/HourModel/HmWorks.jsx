@@ -8,14 +8,15 @@ import howitwork  from "../../../images/howitwork.jpg"
 
 
 
-export default function HmWorks(){
+export default function HmWorks({hourModel}){
 
-    const data2 = [
-        { id: 1, title: "Hourly Engagement",desc:"You decide how many consulting hours you require, and we allocate the experts accordingly." },
-        { id: 2, title: "On-Demand Support",desc:"Contact us whenever you need assistance, guidance, or advice regarding your IT challenges." },
-        { id: 3, title: "Immediate Response",desc:"Our team responds promptly, ensuring that your issues are addressed efficiently, and your questions are answered accurately." },
-        {id:4,title:"Cost Transparency",desc:"With our Hour Model, you get full transparency in your tech services expenses, making it easy to manage your budget effectively."},
-    ]
+    // const data2 = [
+    //     { id: 1, title: "Hourly Engagement",desc:"You decide how many consulting hours you require, and we allocate the experts accordingly." },
+    //     { id: 2, title: "On-Demand Support",desc:"Contact us whenever you need assistance, guidance, or advice regarding your IT challenges." },
+    //     { id: 3, title: "Immediate Response",desc:"Our team responds promptly, ensuring that your issues are addressed efficiently, and your questions are answered accurately." },
+    //     {id:4,title:"Cost Transparency",desc:"With our Hour Model, you get full transparency in your tech services expenses, making it easy to manage your budget effectively."},
+    // ]
+    const data2 =  hourModel?.hmWorksData?.data2
     
     
     return(
@@ -32,20 +33,25 @@ export default function HmWorks(){
           <div className="w-3/4 mt-20 z-1">
             <div className="flex mb-5 items-center mt-10">
               <img src={bulbIcon} alt="bulb-icon" className="bulb-icon mr-3" />
-              <h2 className="text-orange-500 text-xl" style={{ fontSize: "20px" }}>HOW IT WORKS</h2>
+              <h2 className="text-orange-500 text-xl" style={{ fontSize: "20px" }}>
+                {/* HOW IT WORKS */}
+                {hourModel?.hmWorksData?.subHeading}
+                </h2>
             </div>
            
             <div className="flex flex-col items-start">
               <h1 className="text-black overflow-hidden font-bold" style={{ fontSize: "44px" }}>
-              How Does The Hour Model Works?
+              {/* How Does The Hour Model Works? */}
+              {hourModel?.hmWorksData?.mainHeading}
               </h1>
               <p className="mt-1 overflow-hidden text-[#777777]" style={{ fontSize: "20px", padding: "20px 0" }}>
-              The Hour Model offers flexible engagement where you decide on the consulting hours needed. Whether you require immediate support, guidance on IT challenges, or want transparency in tech service expenses, our model ensures prompt responses and efficient solutions. This approach allows you to manage your budget effectively while accessing specialized expertise tailored to your business needs.
+              {/* The Hour Model offers flexible engagement where you decide on the consulting hours needed. Whether you require immediate support, guidance on IT challenges, or want transparency in tech service expenses, our model ensures prompt responses and efficient solutions. This approach allows you to manage your budget effectively while accessing specialized expertise tailored to your business needs. */}
+              {hourModel?.hmWorksData?.descriptionText}
               </p>
              
               
               <div className="flex gap-10 justify-items-center">
-                {data2.map((item) => (
+                {data2?.map((item) => (
                     <div
                      key={item.id}
                      className="bg-white p-4 shadow-lg rounded-2xl flex flex-col items-start space-y-2 border border-[#D9D9D9] shadow-md"

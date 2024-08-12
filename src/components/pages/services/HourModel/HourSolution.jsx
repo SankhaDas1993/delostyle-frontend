@@ -6,15 +6,17 @@ import dottedBg from "../../../images/dottedBg.png"
 import aboutListIcon from "../../../images/aboutListIcon.png"
 
 
-export default function HourSolution(){
+export default function HourSolution({hourModel}){
+console.log(hourModel?.hourSolutionData?.mainHeading,"mainHeading");
+  // const listItems = [
+  //   "Hour Based Services",
+  //   "Book Hours Based On Requirement",
+  //   "Perfect Skill Match",
+  //   "Fit to Your Monthly Budget",
+  //   "Complete Flexibility Based On Requirement",
+  // ];
 
-  const listItems = [
-    "Hour Based Services",
-    "Book Hours Based On Requirement",
-    "Perfect Skill Match",
-    "Fit to Your Monthly Budget",
-    "Complete Flexibility Based On Requirement",
-  ];
+  const listItems = hourModel?.hourSolutionData?.listItems
     
     return(
      <div className="flex flex-row mt-10 mb-10" style={{height: "50rem", overflow: "hidden"}}>
@@ -36,24 +38,29 @@ export default function HourSolution(){
     </div>
     <div className="overflow-hidden" >
       <p className="overflow-hidden text-ellipsis font-bold mb-5" style={{ fontSize: "40px" }}>
-      Hour Model Solutions for Your Company,<br/> Flexible IT Consulting Services
+      {/* Hour Model Solutions for Your Company,<br/> Flexible IT Consulting Services */}
+      {hourModel?.hourSolutionData?.mainHeading}
+      {}
       </p>
 
     </div>
     <div className="overflow-hidden w-2/3 mb-5">
       <p className="mb-2 text-[#777777]" style={{ fontSize: "18px" }}>
-      Connect to our experts to know more about Hour Model (HM)
+      {/* Connect to our experts to know more about Hour Model (HM) */}
+      {hourModel?.hourSolutionData?.descriptionText1}
       </p>
       <p className="text-[#777777] mt-5" style={{ fontSize: "18px" }}>
-      Delostyle Studio proudly introduces the “Hour Model” – an agile and convenient way to access expert IT consulting services precisely when you need them. In the fast-paced world of technology, our Hour Model offers flexibility and responsiveness, allowing you to tap into our consulting expertise by the hour.
+      {/* Delostyle Studio proudly introduces the “Hour Model” – an agile and convenient way to access expert IT consulting services precisely when you need them. In the fast-paced world of technology, our Hour Model offers flexibility and responsiveness, allowing you to tap into our consulting expertise by the hour. */}
+      {hourModel?.hourSolutionData?.descriptionText2}
       </p>
       <p className="mt-5 text-[#777777]" style={{ fontSize: "18px" }}>
-      Imagine having a team of seasoned IT professionals at your disposal, ready to address your IT consulting needs at a moment’s notice. With our Hour Model, you gain access to our vast pool of talent.
+      {/* Imagine having a team of seasoned IT professionals at your disposal, ready to address your IT consulting needs at a moment’s notice. With our Hour Model, you gain access to our vast pool of talent. */}
+      {hourModel?.hourSolutionData?.descriptionText3}
       </p>
 
     </div>
     
-    {listItems.map((item, index) => (
+    {listItems?.map((item, index) => (
         <div className="flex justify-start mb-2" key={index}>
           <img src={aboutListIcon} alt="bulb-icon" className="about-icon mr-3" style={{height:"20px",width:"20px"}}/>
           <p className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "18px" }}>

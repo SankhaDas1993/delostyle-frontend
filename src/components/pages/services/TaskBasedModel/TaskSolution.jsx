@@ -6,15 +6,16 @@ import dottedBg from "../../../images/dottedBg.png"
 import aboutListIcon from "../../../images/aboutListIcon.png"
 
 
-export default function TaskSolution(){
+export default function TaskSolution({taskModel}){
 
-  const listItems = [
-    "Evaluation Services",
-    "Visualize Your Task Getting Completed",
-    "Perfect Skill Match",
-    "Fit To Your Project Task",
-    "Flexibility Based On Requirement",
-  ];
+  // const listItems = [
+  //   "Evaluation Services",
+  //   "Visualize Your Task Getting Completed",
+  //   "Perfect Skill Match",
+  //   "Fit To Your Project Task",
+  //   "Flexibility Based On Requirement",
+  // ];
+const listItems =  taskModel?.taskSolutionData?.listItems
     
     return(
      <div className="flex flex-row mt-10 mb-10" style={{height: "55rem", overflow: "hidden"}}>
@@ -32,28 +33,35 @@ export default function TaskSolution(){
   <div className="h-full overflow-hidden flex-1 mx-5">
     <div className="flex justify-start mb-5">
       <img src={bulbIcon} alt="bulb-icon" className="bulb-icon mr-3" />
-      <h2 className="text-orange-500  overflow-hidden" style={{ fontSize: "20px" }}>TASK BASED MODEL</h2>
+      <h2 className="text-orange-500  overflow-hidden" style={{ fontSize: "20px" }}>
+        {/* TASK BASED MODEL */}
+        {taskModel?.taskSolutionData?.subHeading}
+        </h2>
     </div>
     <div className="overflow-hidden" >
       <p className="overflow-hidden text-ellipsis font-bold mb-5" style={{ fontSize: "40px" }}>
-      Task-Based Model Solutions for Your <br/>Company, Adaptive IT Consulting Services
+      {/* Task-Based Model Solutions for Your <br/>Company, Adaptive IT Consulting Services */}
+      {taskModel?.taskSolutionData?.mainHeading}
       </p>
 
     </div>
     <div className="overflow-hidden w-2/3 mb-5">
       <p className="mb-2 text-[#777777]" style={{ fontSize: "18px" }}>
-      Connect to our experts to know more about Task Based Model (TBM)
+      {/* Connect to our experts to know more about Task Based Model (TBM) */}
+      {taskModel?.taskSolutionData?.descriptionText1}
       </p>
       <p className="text-[#777777] mt-5" style={{ fontSize: "18px" }}>
-      Even if you need to hire a single software engineer suitable for a certain task, finding one may take quite a lot of time and effort. At the same time, you will also have to help the new employee adapt to the team and onboard them, which may be quite difficult and time-consuming.
+      {taskModel?.taskSolutionData?.descriptionText2}
+      {/* Even if you need to hire a single software engineer suitable for a certain task, finding one may take quite a lot of time and effort. At the same time, you will also have to help the new employee adapt to the team and onboard them, which may be quite difficult and time-consuming. */}
       </p>
       <p className="mt-5 text-[#777777]" style={{ fontSize: "18px" }}>
-      Choose Delostyle Studio’s “Task Based Model” to experience a dynamic approach to addressing precise IT consulting needs with efficiency and accuracy. In the ever-evolving landscape of technology, our Task Based Model has been designed to present you with tailored solutions, allowing you to access expert IT consulting services for specific tasks and projects.
+      {taskModel?.taskSolutionData?.descriptionText3}
+      {/* Choose Delostyle Studio’s “Task Based Model” to experience a dynamic approach to addressing precise IT consulting needs with efficiency and accuracy. In the ever-evolving landscape of technology, our Task Based Model has been designed to present you with tailored solutions, allowing you to access expert IT consulting services for specific tasks and projects. */}
       </p>
 
     </div>
     
-    {listItems.map((item, index) => (
+    {listItems?.map((item, index) => (
         <div className="flex justify-start mb-2" key={index}>
           <img src={aboutListIcon} alt="bulb-icon" className="about-icon mr-3" style={{height:"20px",width:"20px"}}/>
           <p className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "18px" }}>

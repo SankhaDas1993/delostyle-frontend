@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import bulbIcon from "../../../images/bulbIcon.png"
 import blogBorder from "../../../images/blogBorder.png"
 import sideBorder from "../../../images/sideBorder.png"
@@ -6,10 +6,15 @@ import dottedBg from "../../../images/dottedBg.png"
 import aboutListIcon from "../../../images/aboutListIcon.png"
 
 
-export default function OperationalPro(){
+export default function OperationalPro({data, loading}){
+  const [operationalProData, setOperationalProData] = useState({})
+  const [load, setLoading] = useState(loading)
 
-
-    
+  useEffect(() => {
+    setOperationalProData(data?.operationalProData)
+    setLoading(loading)
+  }, [data])
+ 
     return(
      <div className="flex flex-row mt-10" style={{height: "42rem", overflow: "hidden"}}>
         <div className="h-full mt-5" style={{width: "520px"}}>
@@ -30,19 +35,19 @@ export default function OperationalPro(){
     </div>
     <div className="overflow-hidden" >
       <p className="overflow-hidden text-ellipsis font-bold mb-5" style={{ fontSize: "50px" }}>
-      DHM Help Brands Adapt And <br/> Thrive In The Professional World
+     {load ? "DHM Help Brands Adapt And <br/> Thrive In The Professional World":operationalProData?.mainHeading}
       </p>
 
     </div>
     <div className="overflow-hidden w-2/3 mb-5">
       <p className="mb-2 text-[#777777]" style={{ fontSize: "18px" }}>
-      We’re here to show you that the search for resource is over.
+       {load ? " We’re here to show you that the search for resource is over.":operationalProData?.descriptionText}
       </p>
       <p className="text-[#777777] mt-5" style={{ fontSize: "18px" }}>
-      With Delostyle Studio’s Dedicated Hiring Model, you gain a competitive edge by accessing top talent, cutting-edge technology, and cost-effective solutions. We’re your trusted partner in IT consulting services, offering consulting services that drive your business forward. Embrace the future of IT consulting with Delostyle Studio today.
+      {load ? "With Delostyle Studio’s Dedicated Hiring Model, you gain a competitive edge by accessing top talent, cutting-edge technology, and cost-effective solutions. We’re your trusted partner in IT consulting services, offering consulting services that drive your business forward. Embrace the future of IT consulting with Delostyle Studio today.":operationalProData?.additionalText}
       </p>
       <p className="mt-5 text-[#777777]" style={{ fontSize: "18px" }}>
-      Contact us to learn more about how our Dedicated Hiring Model can benefit your organization
+      {load ? "Contact us to learn more about how our Dedicated Hiring Model can benefit your organization":operationalProData?.introText}
       </p>
     </div>
   </div>

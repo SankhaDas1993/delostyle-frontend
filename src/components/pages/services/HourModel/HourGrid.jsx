@@ -4,7 +4,7 @@ import icongrid2 from "../../../images/icongrid2.png";
 import icongrid3 from "../../../images/icongrid3.png";
 import icongrid4 from "../../../images/icongrid4.png";
 
-const HourGrid = () => {
+const HourGrid = ({hourModel}) => {
   const items = [
     {
       title: "Server Side Language",

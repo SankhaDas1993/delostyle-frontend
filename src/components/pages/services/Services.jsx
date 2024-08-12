@@ -9,18 +9,22 @@ import ServicesBanner2 from "./ServicesBanner2";
 import Process from "./Process";
 import OurExpert from "./OurExpert";
 import ConsultingPro from "./ConsultingPro";
+import useService from "./serviceFn/apiService";
 
 export default function Services(){
+    const { data, isError, isLoading, refetch} = useService()
+    console.log(isLoading, "is load")
+    console.log(data, "data")
 
     return(
         <div className="overflow-hidden">
         <Navbar/>
-        <ServicesBanner/>
-        <TypeOfService/>
-        <ServicesBanner2/>
-        <Process/>
-        <OurExpert/>
-        <ConsultingPro/>
+        <ServicesBanner data ={data} loading={isLoading}/>
+        <TypeOfService data ={data} loading={isLoading}/>
+        <ServicesBanner2 data ={data} loading={isLoading}/>
+        <Process data ={data} loading={isLoading}/>
+        <OurExpert data ={data} loading={isLoading}/>
+        <ConsultingPro data ={data} loading={isLoading}/>
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>

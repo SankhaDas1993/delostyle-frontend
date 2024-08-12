@@ -19,7 +19,6 @@ export default function FAQ(){
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>
-
         </>
     )
 }

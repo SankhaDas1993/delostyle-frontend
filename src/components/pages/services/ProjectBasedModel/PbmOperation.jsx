@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import bulbIcon from "../../../images/bulbIcon.png"
 import blogBorder from "../../../images/blogBorder.png"
 import sideBorder from "../../../images/sideBorder.png"
@@ -6,8 +6,9 @@ import dottedBg from "../../../images/dottedBg.png"
 import aboutListIcon from "../../../images/aboutListIcon.png"
 
 
-export default function PbmOperation(){
-
+export default function PbmOperation({data,loading}){
+  const [pbmOperationData, setPbmOperationData] = useState({})
+  const [load, setLoading] = useState(loading)
   const listItems = [
     "Evaluation Services",
     "Development of Risk Free Models",
@@ -15,7 +16,10 @@ export default function PbmOperation(){
     "Job Fit To Your Budget",
     "Flexibility Based On Requirement",
   ];
-    
+  useEffect(() => {
+    setPbmOperationData(data?.pbmOperationData)
+    setLoading(loading)
+  }, [data])   
     return(
      <div className="flex flex-row mt-10" style={{height: "42rem", overflow: "hidden"}}>
         <div className="h-full mt-5" style={{width: "520px"}}>
@@ -36,16 +40,16 @@ export default function PbmOperation(){
     </div>
     <div className="overflow-hidden" >
       <p className="overflow-hidden text-ellipsis font-bold mb-5" style={{ fontSize: "46px" }}>
-      PBM Help Brands Adapt And <br/> Thrive In The Professional <br/> World
+      {load ? "PBM Help Brands Adapt And Thrive In The Professional World":pbmOperationData?.mainHeading}
       </p>
 
     </div>
     <div className="overflow-hidden w-2/3 mb-5">
       <p className="mb-2 text-[#777777]" style={{ fontSize: "18px" }}>
-      We’re here to show you that the search for resource is over.
+       {load ? "We’re here to show you that the search for resource is over.":pbmOperationData?.descriptionText1}
       </p>
       <p className="text-[#777777] mt-5" style={{ fontSize: "18px" }}>
-      Our Project Based Model is a client-centric approach that focuses on delivering precise tech services that stand out to meet the demands of your unique projects. We understand that one-size-fits-all solutions never really works that well, and that’s where our expertise comes into play.
+       {load ? "Our Project Based Model is a client-centric approach that focuses on delivering precise tech services that stand out to meet the demands of your unique projects. We understand that one-size-fits-all solutions never really works that well, and that’s where our expertise comes into play.":pbmOperationData?.descriptionText2}
       </p>
      
     </div>

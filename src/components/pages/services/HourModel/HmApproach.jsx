@@ -4,7 +4,7 @@ import ap2 from "../../../images/ap2.png";
 import ap3 from "../../../images/ap3.png";
 import ap4 from "../../../images/ap4.png";
 
-const HmApproach = () => {
+const HmApproach = ({hourModel}) => {
   const items = [
     {
       title: "Developing Business Solutions",

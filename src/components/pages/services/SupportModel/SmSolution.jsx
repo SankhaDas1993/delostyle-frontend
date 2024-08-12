@@ -6,15 +6,17 @@ import dottedBg from "../../../images/dottedBg.png"
 import aboutListIcon from "../../../images/aboutListIcon.png"
 
 
-export default function SmSolution(){
+export default function SmSolution({supportData}){
+// console.log(supportData.smSolutionData.mainHeading,"supportDatasupportData")
+  // const listItems = [
+  //   "Hour Based Services",
+  //   "Development Of Risk Free Models",
+  //   "Perfect Skill Match",
+  //   "Fit To Your Budget",
+  //   "Flexibility Based On Requirement",
+  // ];
 
-  const listItems = [
-    "Hour Based Services",
-    "Development Of Risk Free Models",
-    "Perfect Skill Match",
-    "Fit To Your Budget",
-    "Flexibility Based On Requirement",
-  ];
+  const listItems = supportData?.smSolutionData?.listItems
     
     return(
      <div className="flex flex-row mt-10 mb-10" style={{height: "55rem", overflow: "hidden"}}>
@@ -36,24 +38,28 @@ export default function SmSolution(){
     </div>
     <div className="overflow-hidden" >
       <p className="overflow-hidden text-ellipsis font-bold mb-5 whitespace-normal w-[826px]" style={{ fontSize: "40px" }}>
-      Support Model Solutions for Your Company, Responsive IT Consulting Services
+      {/* Support Model Solutions for Your Company, Responsive IT Consulting Services */}
+      {supportData?.smSolutionData?.mainHeading}
       </p>
 
     </div>
     <div className="overflow-hidden w-2/3 mb-5">
       <p className="mb-2 text-[#777777]" style={{ fontSize: "18px" }}>
-      Connect to our experts to know more about Support Model (SM)
+      {/* Connect to our experts to know more about Support Model (SM) */}
+      {supportData?.smSolutionData?.descriptionText1}
       </p>
       <p className="text-[#777777] mt-5" style={{ fontSize: "18px" }}>
-      Providing support for the softwares that you create need specialized skills. We have trained resources with technical skills to provide support for the softwares. Hiring such skills might be a challenge for your organization.
+      {/* Providing support for the softwares that you create need specialized skills. We have trained resources with technical skills to provide support for the softwares. Hiring such skills might be a challenge for your organization. */}
+      {supportData?.smSolutionData?.descriptionText2}
       </p>
       <p className="mt-5 text-[#777777]" style={{ fontSize: "18px" }}>
-      Welcome to Delostyle Studio’s “Support Model” – your go-to solution for dependable and timely IT consulting services. In today’s fast-paced world of technology, our Support Model is designed to offer you the assistance you require, precisely when you need it, ensuring your business stays on the cutting edge.
+      {/* Welcome to Delostyle Studio’s “Support Model” – your go-to solution for dependable and timely IT consulting services. In today’s fast-paced world of technology, our Support Model is designed to offer you the assistance you require, precisely when you need it, ensuring your business stays on the cutting edge. */}
+      {supportData?.smSolutionData?.descriptionText3}
       </p>
 
     </div>
     
-    {listItems.map((item, index) => (
+    {listItems?.map((item, index) => (
         <div className="flex justify-start mb-2" key={index}>
           <img src={aboutListIcon} alt="bulb-icon" className="about-icon mr-3" style={{height:"20px",width:"20px"}}/>
           <p className="text-orange-500 text-xl mb-2 overflow-hidden" style={{ fontSize: "18px" }}>
