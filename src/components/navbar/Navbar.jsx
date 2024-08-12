@@ -1,122 +1,212 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+// import "./NavBartop.css";
+import "./navbar.css"
 import logo from "../images/logo.svg";
 import navbarImg from "../images/navbarImg.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faInstagram,
+  faYoutube,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const [isToggleOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
-
-  const handleDropdownClick = (menu) => {
+  const toggleNavbar = () => {
+    setIsOpen(!isToggleOpen);
+  };
+  const navigate=useNavigate()
+  // document
+  //   .getElementById("hamburgerMenu")
+  //   .addEventListener("click", function () {
+  //     this.classNameList.toggle("active");
+  //   });
+  const handleDropdown = (menu) => {
     if (dropdownOpen === menu) {
       setDropdownOpen(null);
     } else {
       setDropdownOpen(menu);
     }
   };
-
-  const handleOutsideClick = (event) => {
-    if (!event.target.closest('.dropdown')) {
-      setDropdownOpen(null);
-    }
-  };
-
-  React.useEffect(() => {
-    document.addEventListener('click', handleOutsideClick);
+  //
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+  
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  //
+  const SocialIcon = ({ href, icon, size, className }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
+      <FontAwesomeIcon icon={icon} size={size} />
+    </a>
+  );
+  //
+  const socialMediaLinks = [
+    { href: "https://www.facebook.com/officialdelostylestudio/", icon: faFacebook },
+    { href: "https://www.instagram.com/delostylestudio/", icon: faInstagram },
+    { href: "https://www.youtube.com/@delostylestudio8426", icon: faYoutube },
+    { href: "https://in.linkedin.com/company/delostylestudio", icon: faLinkedin },
+  ];
+  //
+  const SocialItems = ({ className }) => (
+    <div className={className}>
+      {socialMediaLinks.map((link, index) => (
+        <SocialIcon
+          key={index}
+          href={link.href}
+          icon={link.icon}
+          size="lg"
+          className="text-white"
+        />
+      ))}
+    </div>
+  );
+  //
   return (
-    <nav className="bg-white border-gray-200 dark:bg-blue-900 " style={{ backgroundImage: `url(${navbarImg})`, backgroundSize: 'cover', height: "150px", width: "100%", borderBottom: "2px solid gray" }}>
-      <div className="max-w-screen-xl flex flex-wrap justify-between p-4" style={{ marginLeft: "14rem" }}>
-        <a href="/" className="flex p-6">
-          <img src={logo} className="h-8" alt="delostyle-logo" style={{ height: "97px" }} />
-        </a>
-        <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-          <span className="sr-only">Open main menu</span>
-          <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
-          </svg>
-        </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <div className="flex items-center justify-end space-x-4 mx-4">
-            <a href="#" className="text-white">
-              <FontAwesomeIcon icon={faFacebook} size="lg" />
-            </a>
-            <a href="#" className="text-white">
-              <FontAwesomeIcon icon={faInstagram} size="lg" />
-            </a>
-            <a href="#" className="text-white">
-              <FontAwesomeIcon icon={faYoutube} size="lg" />
-            </a>
-            <a href="#" className="text-white">
-              <FontAwesomeIcon icon={faLinkedin} size="lg" />
-            </a>
+    <div>
+      <nav className="navbar">
+        <img src={navbarImg} alt="Navbar Image" className="navbar-image" />
+        <div className="navItemContainer">
+          <div className="logoContainer">
+            <img src={logo} alt="delostyle" className="logoMain" />
           </div>
-          <div style={{ width: "100%", display: 'flex', alignItems: "center", justifyContent: "flex-end", marginTop: "5px" }}>
-            <div style={{ width: "20%", height: "2px", background: "white", opacity: 0.3, marginRight: "13px" }} />
+          <div className="navLinksContainer">
+            <SocialItems className="socialItems" />
+            <div className="nav-Links-Container">
+              <ul className=" flex justify-items-end" style={{}}>
+                <li className="nav-Link"><a href="/" className="block py-2 px-3 text-white"> Home</a></li>
+                <li className="nav-Link" id="aboutLink">
+                  <a href="/" className="block py-2 px-3 text-white">About</a>
+                  <div className="dropdown-menu">
+                    <ul>
+                      <li><a className="dropdown-item "   onClick={()=>navigate("/about-us")}>About Us</a></li>
+                      <li><a className="dropdown-item "  onClick={()=>navigate("/team")}> Team</a> </li>
+                      <li><a className="dropdown-item "   onClick={()=>navigate("/clients")}> Clients</a> </li>
+                      <li> <a className="dropdown-item "   onClick={()=>navigate("/history")}> History </a> </li>
+                      <li> <a className="dropdown-item "   onClick={()=>navigate("/testimonials")}>Testimonials</a></li>
+                      <li> <a className="dropdown-item "   onClick={()=>navigate("/careers")}>Careers</a> </li>
+                    </ul>
+                  </div>
+                </li>
+                <li className="nav-Link" id="servicesLink">
+                  <a href="/" className="block py-2 px-3 text-white">Services</a>
+                  <div className="dropdown-menu">
+                    <ul className="" aria-labelledby="servicesDropdown">
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/services")} >Our Services</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/hiringmodel")}>Dedicated Hiring Model</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/projectmodel")}>Project Based Model</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/hourmodel")}>Hour Model</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/taskmodel")}>Task Based Model</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/supportmodel")}>Support Model</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/hybridmodel")}>Hybrid Model</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/getquote")}>Get Quote</a></li>
+                        <li><a className="dropdown-item "  onClick={()=>navigate("/faqs")}>FAQs</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li className="nav-Link" style={{cursor:"pointer"}}> <a onClick={()=>navigate("/blogs")}className="block py-2 px-3 text-white"> Blogs</a></li>
+                <li className="nav-Link" style={{cursor:"pointer"}}><a onClick={()=>navigate("/contact")} className="block py-2 px-3 text-white">Contact</a></li>
+              </ul>
+            </div>
           </div>
-          <div style={{ marginLeft: "80px", fontSize: "22px", marginBottom: "20px" }}>
-            <ul className="font-medium flex flex-col md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0" style={{ marginTop: "25px", fontSize: "22px" }}>
-              <li className="relative dropdown">
-                <a href="/" className="block py-2 px-3 text-white">Home</a>
-              </li>
-              <li className="relative dropdown">
-                <a href="#" className="block py-2 px-3 text-white" onClick={() => handleDropdownClick('about')}>About</a>
-                {dropdownOpen === 'about' && (
-                  <div className="absolute left-0 top-full mt-2 z-10 bg-blue-900 bg-blue-50 bg-opacity-90 shadow-lg rounded-md w-60">
-                    <ul className="py-1">
-                      <li><a href="/about" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">About Us</a></li>
-                      <li><a href="/team" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Team</a></li>
-                      <li><a href="/clients" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Clients</a></li>
-                      <li><a href="#" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">History</a></li>
-                      <li><a href="#" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Testimonials</a></li>
-                      <li><a href="/careers" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Careers</a></li>
-                      
-                    </ul>
-                  </div>
-                )}
-              </li>
-              <li className="relative dropdown">
-                <a href="#" className="block py-2 px-3 text-white" onClick={() => handleDropdownClick('services')}>Services</a>
-                {dropdownOpen === 'services' && (
-                  <div className="absolute left-0 top-full mt-2 z-10 bg-blue-900 bg-blue-50 bg-opacity-90 shadow-lg rounded-md w-60">
-                    <ul className="py-1">
-                      <li><a href="/services" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Our Services</a></li>
-                      <li><a href="/hiringmodel" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Dedicated Hiring Model</a></li>
-                      <li><a href="/projectmodel" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Project Based Model</a></li>
-                      <li><a href="/hourmodel" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Hour Model</a></li>
-                      <li><a href="/taskmodel" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Task Based Model</a></li>
-                      <li><a href="/supportmodel" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Support Model</a></li>
-                      <li><a href="/hybridmodel" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Hybrid Model</a></li>
-                      <li><a href="/quote" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">Get Quote</a></li>
-                      <li><a href="/FAQ" className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-black">FAQs</a></li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-              <li className="relative dropdown">
-                <a href="#" className="block py-2 px-3 text-white" onClick={() => handleDropdownClick('blogs')}>Blogs</a>
-                {dropdownOpen === 'blogs' && (
-                  <div className="absolute left-0 top-full mt-2 z-10 bg-blue-900 bg-blue-50 bg-opacity-90 shadow-lg rounded-md w-60">
-                    <ul className="py-1">
-                      <li><a href="#" className="block px-4 py-2 text-white hover:bg-gray-100  hover:text-black">Blogs</a></li>
-                    
-                    </ul>
-                  </div>
-                )}
-              </li>
-              <li>
-                <a href="/contact" className="block py-2 px-3 text-white">Contact</a>
-              </li>
-            </ul>
+          <div className={`hamburger-menu ${isToggleOpen ? "" : ""}`} id="hamburgerMenu" onClick={toggleNavbar}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
           </div>
         </div>
+      </nav>
+      {/* toggle side-navbar */}
+      <div className={`side-navbar ${isToggleOpen ? "open" : ""}`}>
+        <div className="toggleHead ps-4">
+          <img src={logo} alt="delostyle" className="logo-side" />
+          <button className="toggle-close-btn" onClick={toggleNavbar}>×</button>
+        </div>
+        <ul className="toggle-ul">
+          <li className="toggle-li"><a href="/" className="">Home</a></li>
+          <li className="toggle-li">
+            <a href="#" onClick={() => handleDropdown("about")}>About{" "}
+              <span className="arrow-icon">
+                <svg
+                  width="18"
+                  height="10"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L5 5L9 1"
+                    stroke="#18416b"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </a>
+          </li>
+          {dropdownOpen === "about" && (
+            <div className={`toggle-dropdown-menu ${ dropdownOpen === "about" ? "open" : ""}`}>
+                <ul>
+                    <li><a className="text-white" onClick={()=>navigate("/about-us")}>About Us</a></li>
+                    <li><a className="text-white" onClick={()=>navigate("/team")}>Team</a></li>
+                    <li><a className="text-white" onClick={()=>navigate("/clients")}>Clients</a></li>
+                </ul>
+            </div>
+          )}
+          <li className="toggle-li">
+            <a href="#" onClick={() => handleDropdown("services")}> Services{" "}
+              <span className="arrow-icon">
+                <svg
+                  width="18"
+                  height="10"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M1 1L5 5L9 1"
+                        stroke="#18416b"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                </svg>
+              </span>
+            </a>
+          </li>
+          {dropdownOpen === "services" && (
+            <div className={`toggle-dropdown-menu ${ dropdownOpen === "services" ? "open" : ""}`}>
+                <ul>
+                    <li><a className="text-white" onClick={()=>navigate("/services")}>Our Services</a></li>
+                    <li><a className="text-white" onClick={()=>navigate("/hiringmodel")}>Dedicated Hiring Model</a></li>
+                    <li><a className="text-white" onClick={()=>navigate("/projectmodel")}>Project Based Model</a></li>
+                    <li><a className="text-white" onClick={()=>navigate("/hourmodel")}>Hour Model</a></li>
+                </ul>
+            </div>
+          )}
+          <li className="toggle-li"> <a href="/services">Blogs</a></li>
+          <li className="toggle-li"> <a href="/contact">Contact</a></li>
+        </ul>
+        <div className="toggle-social">
+          <SocialItems className="socialItems-toggle" />
+        </div>
       </div>
-    </nav>
+    </div>
   );
-}
-
+};
 export default Navbar;
