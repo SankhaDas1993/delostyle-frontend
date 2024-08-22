@@ -25,11 +25,13 @@ const SmGrid = () => {
   ];
 
   return (
-    <div className="flex justify-center items-center mx-2 p-2"> 
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 mx-4 sm:mx-10 lg:mx-20"> 
       {items.map((item, index) => (
-        <div key={index} className="box-grid w-[250px] h-[250px] flex flex-col items-center justify-center rounded-lg overflow-hidden shadow-xl m-2"> 
-          <img src={item.image} alt={item.title} className="w-[110px] h-[110px] object-contain " />
-          <p className="text-center font-medium text-black mt-2 whitespace-normal w-[150px]" style={{ fontSize: "20px" }}>{item.title}</p>
+        <div key={index} className="flex flex-col items-center justify-center rounded-lg overflow-hidden shadow-xl p-4 m-2">
+          <img src={item.image} alt={item.title} className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 object-contain mb-4" />
+          <p className="text-center font-medium text-black text-sm sm:text-lg lg:text-xl max-w-[200px]">
+            {item.title}
+          </p>
         </div>
       ))}
     </div>

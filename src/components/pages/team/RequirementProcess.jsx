@@ -4,10 +4,10 @@ import dottedBg from "../../images/dottedBg.png";
 import "./team.css";
 import RequirementProcessCommon from "../RequirementProcess/RequirementProcessCommon";
 
-export default function RequirementProcess() {
+export default function RequirementProcess({teamData}) {
   return (
    <>
-    <RequirementProcessCommon/>
+    <RequirementProcessCommon teamData={teamData}/>
    </>
   );
 }

@@ -5,6 +5,7 @@ import Newsletter from "../../newsletter/Newsletter";
 import SocialUpdates from "../../socialUpdates/SocialUpdates";
 import Form from "./Form";
 
+
 export default function GetQuote(){
 
     return(
@@ -14,7 +15,6 @@ export default function GetQuote(){
         <Newsletter/>
         <SocialUpdates/>
         <Footer/>
-
         </>
     )
 }

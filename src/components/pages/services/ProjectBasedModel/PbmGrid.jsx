@@ -25,11 +25,13 @@ const PbmGrid = () => {
   ];
 
   return (
-    <div className="flex justify-center items-center mx-2 p-5"> 
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center items-center mx-2 p-5 lg:grid-cols-4"> 
       {items.map((item, index) => (
-        <div key={index} className="w-80 h-80 flex flex-col items-center justify-center rounded-lg overflow-hidden shadow-xl m-2"> 
-          <img src={item.image} alt={item.title} className="w-40 h-40 object-contain" />
-          <p className="text-center font-medium text-black mt-2" style={{ fontSize: "20px" }}>{item.title}</p>
+        <div key={index} className="flex flex-col items-center justify-center rounded-lg overflow-hidden shadow-xl p-4"> 
+          <img src={item.image} alt={item.title} className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-contain" />
+          <p className="text-center font-medium text-black mt-4 text-sm sm:text-lg lg:text-xl">
+            {item.title}
+          </p>
         </div>
       ))}
     </div>

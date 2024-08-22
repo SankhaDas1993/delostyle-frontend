@@ -1,89 +1,69 @@
 import React from "react";
-import bulbIcon from "../../../images/bulbIcon.png"
-import dhmDotted from "../../../images/dhmDotted.png"
+import bulbIcon from "../../../images/bulbIcon.png";
+import dhmDotted from "../../../images/dhmDotted.png";
 
+export default function WhySm({ supportData }) {
+  const data2 = supportData?.whySmData?.dataItems;
 
-
-
-
-export default function WhySm(){
-
-    const data2 = [
-        { id: 1, title:"On-Demand Expertise",desc:"Our Support Model offers the flexibility to seek tech consulting services as and when you need them, providing solutions on an on-demand basis." },
-        { id: 2, title:"Round-the-Clock Availability" ,desc:"Say goodbye to the burden of retaining a full-time IT team. You pay only for the specific tasks or projects you need assistance with, reducing unnecessary expenses." },
-        { id: 3, title: "Swift Resolution",desc:"Need assistance with a particular project? Or a one-time consultation service on a critical matter is on your mind? Our experts are readily available to cater to your task-specific requirements." },
-        {id:4,title:"Customized Assistance",desc:"Delostyle Studio's consultants boast comprehensive expertise, enabling us to address a wide range of IT challenges and projects."},
-        
-      ];
-    
-    
-    return(
-        <div 
-      className="consulting-banner relative flex bg-center bg-no-repeat bg-cover mt-20 overflow-hidden"
+  return (
+    <div
+      className="consulting-banner relative flex flex-col md:flex-row bg-center bg-no-repeat bg-cover mt-10 sm:mt-20 overflow-hidden"
       style={{
         background: 'linear-gradient(108.17deg, #00274D 32.68%, #005BB3 100.49%)',
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       <div className="absolute inset-0 bg-blue-900 bg-opacity-40"></div>
-           <div 
-          className="absolute inset-0 bg-[#B0BEC5]"
-          style={{ opacity: 0.4, zIndex : -10}} 
-        ></div>
-      
-        <div className="relative flex flex-col md:flex-row items-center justify-start mx-20 text-white  p-5">
-          <div className=" mt-20 mx-10">
-            <div className="flex mb-5 items-center mt-10">
-              <img src={bulbIcon} alt="bulb-icon" className="bulb-icon mr-3" />
-              <h2 className="text-orange-500 text-xl" style={{ fontSize: "20px" }}>WHY SM</h2>
-            </div>
-           
-            <div className="flex flex-col items-start">
-              <h1 className="text-white overflow-hidden font-bold" style={{ fontSize: "56px" }}>
-              Why Choose The Support Model?
-              </h1>
-              <p className="mt-1 overflow-hidden text-white" style={{ fontSize: "20px", padding: "20px 0"}}>
-              Opt for our Support Model to benefit from flexible, on-demand tech consulting services designed to meet your unique business needs. With 24/7 availability, our experts ensure swift resolution of IT issues, from troubleshooting to critical advice. We provide customized assistance that aligns perfectly with your specific tech requirements, ensuring minimal disruptions and seamless operations for your business.
-              </p>
-             
-              <div className="flex gap-5 mt-10 mx-2 justify-items-center">
-                {data2.map((item) => (
+      <div
+        className="absolute inset-0 bg-[#B0BEC5]"
+        style={{ opacity: 0.4, zIndex: -10 }}
+      ></div>
+
+      <div className="relative z-10 flex flex-col items-center justify-start mx-4 sm:mx-10 lg:mx-20 text-white p-5">
+        <div className="mt-10 sm:mt-20 w-full">
+          <div className="flex mb-5 items-center justify-center sm:justify-start">
+            <img src={bulbIcon} alt="bulb-icon" className="w-8 h-8 sm:w-10 sm:h-10 mr-3" />
+            <h2 className="text-orange-500 text-lg sm:text-xl">
+              WHY SM
+            </h2>
+          </div>
+
+          <div className="flex flex-col items-center sm:items-start">
+            <h1 className="text-white font-bold text-3xl sm:text-4xl lg:text-5xl text-center sm:text-left">
+              {supportData?.whySmData?.mainHeading}
+            </h1>
+            <p className="mt-3 text-white text-sm sm:text-lg lg:text-xl text-center sm:text-left whitespace-normal break-words" style={{ padding: "20px 0" }}>
+              {supportData?.whySmData?.descriptionText}
+            </p>
+
+            <div className="flex flex-wrap gap-5 justify-center sm:justify-start mt-6">
+              {data2?.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-[#00274D] border relative p-4 shadow-lg rounded-2xl flex flex-col items-center sm:items-start space-y-2 w-full sm:w-60"
+                >
+                  <div className="bg-white absolute h-full w-full top-0 left-0" style={{ opacity: 0.2 }} />
                   <div
-                    key={item.id}
-                    className="bg-[#00274D]  z-30 border relative p-4 shadow-lg rounded-2xl flex flex-col items-start space-y-2"
-                    style={{ height: "360px", width: "260.0px" }}
+                    className="flex items-center justify-center font-bold w-10 h-10 border-2 border-orange-500 bg-orange-100 text-orange-500 rounded-full"
                   >
-                  <div className="bg-white absolute h-full w-full top-0 left-0" style={{
-                    opacity : 0.2
-                  }} />
-                    <div
-                      className="flex items-center z-40 justify-center font-bold"
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        border: "2px solid #FF6600",
-                        backgroundColor: "rgba(255, 102, 0, 0.1)",
-                        color: "#FF6600",
-                        borderRadius: "50%",
-                        position: "relative"
-                      }}
-                    >
-                      <h2 style={{fontSize:"32px"}}>{item.id}</h2>
-                    </div>
-                    
-                    <p className="text-lg text-[#00274D] font-bold mb-3 z-1" style={{ fontSize: "20px", color: "white" }}>{item.title}</p>
-                    <p className="text-[#777777] mt-5 z-30" style={{ fontSize: "16px", color: "white" }}>{item.desc}</p>
+                    <h2 className="text-lg">{item.id}</h2>
                   </div>
-                ))}
-              </div>
-              
-              <img src={dhmDotted} alt="work-together-border" className="absolute top-10 right-0 z-1" style={{ width: '500px', height: '420px' }} />
+
+                  <p className="text-lg text-white font-bold mb-3 text-center sm:text-left">{item.title}</p>
+                  <p className="text-[#777777] mt-2 text-sm sm:text-base text-center sm:text-left">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div> 
-      
-  
 
-    )
+        <img
+          src={dhmDotted}
+          alt="work-together-border"
+          className="absolute top-10 right-[-100px] z-1 w-40 sm:w-64 md:w-80 lg:w-[500px] xl:h-[420px] hidden lg:block"
+          style={{ maxHeight: "100%", maxWidth: "100%" }}
+        />
+      </div>
+    </div>
+  );
 }

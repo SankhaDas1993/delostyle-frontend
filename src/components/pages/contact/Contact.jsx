@@ -9,16 +9,19 @@ import Newsletter from "../newsletter/Newsletter";
 import SocialUpdates from "../socialUpdates/SocialUpdates";
 import Footer from "../footer/Footer";
 import OurWork from "./OurWork";
+import UseContact from "./contactFn/apiContact";
+import ContactOut from "./Contactout";
 
 
 export default function Contact(){
-
+    
+    const { data, isError, isLoading, refetch} = UseContact()
     return(
         <>
             <Navbar/>
 
        
-             <div className="flex flex-row  mt-20" style={{height: "900px", overflow: "hidden"}}>
+             {/* <div className="flex flex-row  mt-20" style={{height: "900px", overflow: "hidden"}}>
                     <div className="h-full mt-10 " style={{width: "200px", marginLeft:"0px"}}>
                         <img src={sideBorder} alt="side-border" className="left-0 top-0 h-full"/>
                     </div>
@@ -80,11 +83,12 @@ export default function Contact(){
                             style={{width: "248px", height: "213px"}} 
                         />
                     </div>
-            </div>
-            <ContactForm/>
-            <OurWork/>
+            </div> */}
+            <ContactOut data ={data} loading={isLoading}/>
+            <ContactForm  data ={data} loading={isLoading}/>
+            <OurWork  data ={data} loading={isLoading}/>
             <Newsletter/>
-            <SocialUpdates/>
+            <SocialUpdates  data ={data} loading={isLoading}/>
             <Footer/>
         </>
     )

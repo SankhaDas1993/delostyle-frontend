@@ -11,8 +11,8 @@ export default function OurClientWork({data,loading}) {
     setClient_WorkData(data?.client_WorkData)
     setLoading(loading)
   }, [data])
-  console.log(client_WorkData)
-  console.log(load);
+  // console.log(client_WorkData)
+  // console.log(load);
   return (
     <div className="relative z-10 flex flex-col md:flex-row items-center justify-start mx-4 md:mx-20 text-white gap-5 md:gap-10 p-5">
       <div className="w-full md:w-3/4 mt-10 md:mt-20 z-1">

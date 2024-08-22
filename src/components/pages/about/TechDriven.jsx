@@ -8,17 +8,32 @@ import td2 from "../../images/td2.png";
 import td3 from "../../images/td3.png";
 import "./about.css";
 
-export default function TechDriven() {
+export default function TechDriven({ data, loading }) {
   const [isWebView, setIsWebView] = useState(window.innerWidth > 1024);
+  const [techDrivenData, setTechDrivenData] = useState(() => {
+    // Load from localStorage or use default data
+    const savedData = JSON.parse(localStorage.getItem("techDrivenData"));
+    return savedData || {
+      techdriven: "Driving Business Success Through Operational Excellence And Cutting-Edge Technology",
+      techdriven1: "Operational processes are the backbone of any successful business...",
+      techdriven2: "Our commitment to providing world-class technology solutions ensures...",
+      // Add other default values here if needed
+    };
+  });
 
   useEffect(() => {
     const handleResize = () => setIsWebView(window.innerWidth > 1024);
-
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
-  // Apply translateX only on web view
+    // Save data to localStorage whenever data prop changes
+    if (data && !loading) {
+      setTechDrivenData(data);
+      localStorage.setItem("techDrivenData", JSON.stringify(data));
+    }
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [data, loading]);
+
   const translateStyle = isWebView ? { transform: 'translateX(100px)' } : {};
 
   return (
@@ -47,15 +62,15 @@ export default function TechDriven() {
           </div>
           <div className="mb-5">
             <p className="text-2xl lg:text-4xl font-bold mb-5">
-              Driving Business Success <br /> Through Operational Excellence <br />And Cutting-Edge Technology
+              {techDrivenData.techdriven || "Driving Business Success <br /> Through Operational Excellence <br />And Cutting-Edge Technology"}
             </p>
           </div>
           <div className="w-full lg:w-2/3 mb-10">
             <p className="mb-2 text-gray-700 text-base lg:text-lg">
-              Operational processes are the backbone of any successful business, driving efficiency and effectiveness across all departments. At Delostyle Studio, we specialize in a project delivery model that seamlessly integrates strategy and cutting-edge technology into businesses. This approach not only enhances operational efficiency but also enables significant cost savings.
+              {techDrivenData.techdriven1 || "Operational processes are the backbone of any successful business, driving efficiency and effectiveness across all departments. At Delostyle Studio, we specialize in a project delivery model that seamlessly integrates strategy and cutting-edge technology into businesses. This approach not only enhances operational efficiency but also enables significant cost savings."}
             </p>
             <p className="text-gray-700 text-base lg:text-lg">
-              Our commitment to providing world-class technology solutions ensures that we offer feasible and cost-effective options tailored to meet your specific needs. We continually strive to stay updated with the latest advancements in technology, ensuring that our solutions are always at the forefront of innovation. By choosing us, you partner with a team dedicated to optimizing your operational processes and driving your business towards sustainable growth and success.
+              {techDrivenData.techdriven2 || "Our commitment to providing world-class technology solutions ensures that we offer feasible and cost-effective options tailored to meet your specific needs. We continually strive to stay updated with the latest advancements in technology, ensuring that our solutions are always at the forefront of innovation. By choosing us, you partner with a team dedicated to optimizing your operational processes and driving your business towards sustainable growth and success."}
             </p>
           </div>
           <hr className="my-10 border-dashed border-2 opacity-20" style={{ borderColor: "#00274D", width: "60%" }} />
@@ -92,8 +107,8 @@ export default function TechDriven() {
         
         {/* Right Dotted Background Image */}
         <div className="absolute right-[240px] top-[200px] hidden 2xl:block">
-  <img src={dottedBg} alt="side-dotted" style={{ width: "96px", height: "400px" }} />
-  </div>
+          <img src={dottedBg} alt="side-dotted" style={{ width: "96px", height: "400px" }} />
+        </div>
 
         {/* Right Blog Border Image */}
         <img 

@@ -10,8 +10,7 @@ const ClientsBanner = ({data,loading}) => {
     setClient_BannerData(data?.client_BannerData)
     setLoading(loading)
   }, [data])
-  console.log(client_BannerData)
-  console.log(load);
+  
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {

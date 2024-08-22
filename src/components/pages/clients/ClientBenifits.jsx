@@ -14,8 +14,7 @@ export default function ClientBenifits({data,loading}) {
     setClient_BenefitData(data?.client_BenefitData)
     setLoading(loading)
   }, [data])
-  console.log(client_BenefitData)
-  console.log(load);
+ 
   return (
     <div className="flex flex-col items-center text-center p-10 rounded-lg m-5 relative z-10">
       <div className="flex items-center justify-center mb-5">

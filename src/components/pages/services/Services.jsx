@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../navbar/Navbar";
 import Newsletter from "../newsletter/Newsletter";
 import SocialUpdates from "../socialUpdates/SocialUpdates";
@@ -9,25 +9,41 @@ import ServicesBanner2 from "./ServicesBanner2";
 import Process from "./Process";
 import OurExpert from "./OurExpert";
 import ConsultingPro from "./ConsultingPro";
-import useService from "./serviceFn/apiService";
+import { getAllService } from "../../utils/api";
 
-export default function Services(){
-    const { data, isError, isLoading, refetch} = useService()
-    console.log(isLoading, "is load")
-    console.log(data, "data")
+export default function Services() {
+    const [serviceData, setServiceData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
-    return(
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                let res = await getAllService();
+                setServiceData(res);
+                setIsLoading(false); // Set loading to false once data is fetched
+            } catch (err) {
+                console.error(err);
+                setIsError(true); // Set error if the API call fails
+                setIsLoading(false); // Set loading to false even in case of error
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
         <div className="overflow-hidden">
-        <Navbar/>
-        <ServicesBanner data ={data} loading={isLoading}/>
-        <TypeOfService data ={data} loading={isLoading}/>
-        <ServicesBanner2 data ={data} loading={isLoading}/>
-        <Process data ={data} loading={isLoading}/>
-        <OurExpert data ={data} loading={isLoading}/>
-        <ConsultingPro data ={data} loading={isLoading}/>
-        <Newsletter/>
-        <SocialUpdates/>
-        <Footer/>
+            <Navbar />
+            <ServicesBanner data={serviceData} loading={isLoading} />
+            <TypeOfService data={serviceData} loading={isLoading} />
+            <ServicesBanner2 data={serviceData} loading={isLoading} />
+            <Process data={serviceData} loading={isLoading} />
+            <OurExpert data={serviceData} loading={isLoading} />
+            <ConsultingPro data={serviceData} loading={isLoading} />
+            <Newsletter />
+            <SocialUpdates />
+            <Footer />
         </div>
-    )
+    );
 }

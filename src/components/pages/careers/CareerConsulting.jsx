@@ -5,7 +5,6 @@ import sideBorder from "../../images/sideBorder.png"
 import dottedBg from "../../images/dottedBg.png"
 import aboutListIcon from "../../images/aboutListIcon.png"
 
-
 export default function CareerConsulting({data,loading}){
   const [carrer_ConsultingData, setCarrer_ConsultingData] = useState({})
   const [load, setLoading] = useState()
@@ -35,7 +34,6 @@ export default function CareerConsulting({data,loading}){
             src={blogBorder} 
             alt="blog-border-left" 
             className="absolute left-0 top-[-21px] w-[248px] h-[213px]" 
-           
           />
          <div className="flex">
          <div className="h-full overflow-hidden flex-1">
@@ -52,12 +50,11 @@ export default function CareerConsulting({data,loading}){
     </h2>
   </div>
 
-  <div className="overflow-hidden mb-1">
+  <div className="overflow-hidden w-full md:w-3/4 lg:w-full mb-1">
     <p 
-      className="overflow-hidden text-ellipsis font-bold text-xl md:text-3xl lg:text-5xl mb-5 h-[60px]"
+      className="overflow-hidden text-ellipsis whitespace-nowrap font-bold text-xl md:text-3xl lg:text-5xl mb-5 h-[60px]"
     >
     {load ? "Careers In Consulting" : carrer_ConsultingData?.Careers}
-    
     </p>
   </div>
 
@@ -116,7 +113,6 @@ export default function CareerConsulting({data,loading}){
             src={blogBorder} 
             alt="blog-border-right " 
             className="absolute right-[10px] bottom-[0px] transform rotate-180 w-[248px] h-[213px]" 
-           
           />
         </div>
       </div>

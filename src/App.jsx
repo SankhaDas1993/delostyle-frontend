@@ -20,6 +20,8 @@ import SupportModel from './components/pages/services/SupportModel/SupportModel'
 import HybridModel from './components/pages/services/HybridModel/HybridModel';
 import GetQuote from './components/pages/services/GetQuote/GetQuote';
 import FAQ from './components/pages/services/FAQ/FAQs';
+import Blognav from './components/pages/blog/Blognav';
+import Blogs from './components/pages/blog/Blogs';
 
 
 const App = () => {
@@ -44,8 +46,9 @@ const App = () => {
       <Route path='/taskmodel' element={<TaskBasedModel/>}/>
       <Route path='/supportmodel' element={<SupportModel/>}/>
       <Route path='/hybridmodel' element={<HybridModel/>}/>
-      <Route path='/quote' element={<GetQuote/>}/>
-      <Route path='/FAQ' element={<FAQ/>}/>
+      <Route path='/getquote' element={<GetQuote/>}/>
+      <Route path='/faqs' element={<FAQ/>}/>
+      <Route path='/blog' element={<Blogs/>}/>
     </Routes>
     </div>
   );

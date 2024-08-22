@@ -13,7 +13,7 @@ import useClient from "./clientFn/apiClient";
 
 export default function OurClients(){
     const { data, isError, isLoading, refetch} = useClient()
-    console.log(isLoading, "is load")
+   
 
     return(
         <div className="overflow-hidden">
